@@ -44,9 +44,11 @@ JavaScript를 활용해서 Web에 'PhotoShop' 또는 스마트폰 APP 중에서 
 
 
 
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTRfNDIg/MDAxNjYzMTExMDI5Mzg4.WlhbTiL1gtWF4n3NGpzS3fBRasEU6kdsM9ROv5vNXwMg.D58qdV8u90NItyijyXFdFM5J3fFiONUZaqNG2cG_P7Yg.PNG.hkpyh/image.png?type=w1)
+![img]
 
-대표사진 삭제
+![ppt01](파일경로)  
+ <img src='01-ppt01.png'>   
+
 
 (PPT 1/15) 제목
 
