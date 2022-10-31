@@ -62,10 +62,6 @@ JavaScript를 활용해서 Web에 'PhotoShop' 또는 스마트폰 APP 중에서 
 
 ![img](https://blogfiles.pstatic.net/MjAyMjA5MTRfMTU4/MDAxNjYzMTExMzg3OTgy.wtCigUDDAJOQVYuhOLBJTW3OP0SZn6_j3PweFCp3Cj4g.s6y2eLVb-7KuO2dAbDSU3eCCR4ifbeAQ5-fRmDQksV0g.PNG.hkpyh/image.png?type=w1)
 
-대표사진 삭제
-
-(PPT 2/15) 목차
-
 \- Simple is Best. 목차는 군더더기 없이 간단히 구성하였다.
 
 (지금 보니 구글에서 찾은 이 템플릿 꽤 마음에 든다.)
@@ -74,11 +70,7 @@ JavaScript를 활용해서 Web에 'PhotoShop' 또는 스마트폰 APP 중에서 
 
 **ㅇ Introduce of Digital Image Processing**
 
-
-
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTRfNTAg/MDAxNjYzMTExNTg1NjIy.RSb_d0lhXuyY8u74Zg21EJlChigqnMWDPkp_m0VvNWog.0UbpyyLvvihJZmkzklHo_Dtf7odSuPmVTI9-MmiX7eMg.PNG.hkpyh/image.png?type=w1)
-
-대표사진 삭제
+![03-ppt03](D:\github_park0ho\images\MiniProject_Ver1.0\03-ppt03.png)
 
 (PPT 4/15) Introduce of Digital Image Processing
 
