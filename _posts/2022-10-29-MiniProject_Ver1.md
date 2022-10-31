@@ -40,7 +40,7 @@ JavaScript를 활용해서 Web에 'PhotoShop' 또는 스마트폰 APP 중에서 
 
 **ㅇ 제목 : Digital Image Processing Using JavaScript**
 
-![01-ppt01](D:\github_park0ho\park0ho.github.io\images\2022-10-29-MiniProject_Ver1\01-ppt01.png)
+![01-ppt01](images/2022-10-29-MiniProject_Ver1/01-ppt01.png)
 
 
 (PPT 1/15) 제목
