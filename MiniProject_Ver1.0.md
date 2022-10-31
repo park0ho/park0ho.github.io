@@ -38,17 +38,11 @@ JavaScript를 활용해서 Web에 'PhotoShop' 또는 스마트폰 APP 중에서 
 
 
 
+![01-ppt01](D:\github_park0ho\images\MiniProject_Ver1.0\01-ppt01.png)
+
+
+
 **ㅇ 제목 : Digital Image Processing Using JavaScript**
-
-
-
-
-
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTRfNDIg/MDAxNjYzMTExMDI5Mzg4.WlhbTiL1gtWF4n3NGpzS3fBRasEU6kdsM9ROv5vNXwMg.D58qdV8u90NItyijyXFdFM5J3fFiONUZaqNG2cG_P7Yg.PNG.hkpyh/image.png?type=w1)
-
-대표사진 삭제
-
-(PPT 1/15) 제목
 
 \- 영상처리를 JavaScript로 구현한 사례는 찾아보기 힘들다. 내가 가르친 학생들 외에는...(우재남 교수 曰)
 
