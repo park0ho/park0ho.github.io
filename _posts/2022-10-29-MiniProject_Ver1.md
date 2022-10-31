@@ -44,7 +44,7 @@ JavaScript를 활용해서 Web에 'PhotoShop' 또는 스마트폰 APP 중에서 
 
 
 
-![img]
+![img] (01-ppt01.png)
 
 ![ppt01](파일경로)  
  <img src='01-ppt01.png'>   
