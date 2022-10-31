@@ -59,11 +59,7 @@ JavaScript를 활용해서 Web에 'PhotoShop' 또는 스마트폰 APP 중에서 
 
 **ㅇ 목차 : 소개, 알고리즘, 추후계획**
 
-
-
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTRfMTU4/MDAxNjYzMTExMzg3OTgy.wtCigUDDAJOQVYuhOLBJTW3OP0SZn6_j3PweFCp3Cj4g.s6y2eLVb-7KuO2dAbDSU3eCCR4ifbeAQ5-fRmDQksV0g.PNG.hkpyh/image.png?type=w1)
-
-대표사진 삭제
+![02-ppt02](D:\github_park0ho\park0ho.github.io\images\2022-10-29-MiniProject_Ver1\02-ppt02.png)
 
 (PPT 2/15) 목차
 
