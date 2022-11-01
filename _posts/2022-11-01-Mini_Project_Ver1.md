@@ -44,7 +44,7 @@ JavaScript를 활용해서 Web에 'PhotoShop' 또는 스마트폰 APP 중에서 
 
 
 
-![img](images/2022-10-29-MiniProject_Ver1/01-ppt01.png){: width="50%" height="50%"}
+![img]([images/2022-10-29-MiniProject_Ver1/01-ppt01.png](https://github.com/park0ho/park0ho.github.io/blob/8fe495c4dd558848a5a0ccfd99d6b674150008b7/images/2022-10-29-MiniProject_Ver1/01-ppt01.png)){: width="50%" height="50%"}
 
 대표사진 삭제
 
