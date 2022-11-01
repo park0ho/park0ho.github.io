@@ -43,8 +43,9 @@ JavaScript를 활용해서 Web에 'PhotoShop' 또는 스마트폰 APP 중에서 
 
 
 
+![01-ppt01](https://user-images.githubusercontent.com/108249298/199362667-369e2e2b-03de-49b0-9f62-75ddc6bf495a.png)
 
-![img](https://github.com/park0ho/park0ho.github.io/blob/8fe495c4dd558848a5a0ccfd99d6b674150008b7/images/2022-10-29-MiniProject_Ver1/01-ppt01.png)){: width="50%" height="50%"}
+![img]([https://github.com/park0ho/park0ho.github.io/blob/8fe495c4dd558848a5a0ccfd99d6b674150008b7/images/2022-10-29-MiniProject_Ver1/01-ppt01.png(https://github.com/park0ho/park0ho.github.io/blob/54377f79901c29bb44e8458d8111b05bad413f8e/images/2022-10-29-MiniProject_Ver1/01-ppt01.png)
 
 대표사진 삭제
 
