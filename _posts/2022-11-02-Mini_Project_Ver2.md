@@ -44,55 +44,122 @@ Mini Project(Ver 1.0)에서는 흑백인 Raw 파일에 대한 영상 처리를 �
 
 ## ㅇ openImage : 영상 파일을 입력
 
-대표사진 삭제
-사진 설명을 입력하세요.
+```javascript
+function openImage() {
+            // inFile = document.getElementById("inFile").files[0]; // 선택한 RAW 파일(LENNA512.RAW)
+            var fileNum = document.getElementById('fileNum').value; // "55", "5"
+            if (parseInt(fileNum) < 10)
+                fileNum = "0" + fileNum; // "05"
+            else 
+                fileNum = fileNum
+            var inFname = "Nature99(Small)/picture" + fileNum + ".jpg";  // Nature99(Small)/picture05.jpg
+            // 그림 파일 --> 이미지 객체
+            var imageObject = new Image(); // 빈 이미지 객체 생성
+            imageObject.src = inFname; // 파일이 이미지객체에 쏙~~~ 들어감.
+```
 - 영상처리 코딩을 위해서 폴더에 picture00 ~ 99.jpg 이름의 100개 파일을 사전에 준비하였다.
 - 처리 하고 싶은 파일의 번호를 선택(fileNum)하면 변하지 않는 변수와 더해서 경로 및 파일명을 입력 시킨다.
+  (예시) 05번 파일 선택시 "Nature99(Small)/picture" + fileNum(05) + .jpg
 
-(예시) 05번 파일 선택시
-"Nature99(Small)/picture" + fileNum(05) + .jpg
 - JavaScript의 Image 함수에 해당 파일을 입력 시킨다.
 
-대표사진 삭제
-사진 설명을 입력하세요.
+```javascript
+imageObject.onload = function () {
+                // 중요! 입력 영상 크기 알아내기
+                inH = imageObject.height;
+                inW = imageObject.width;
+                // 도화기 크기를 이미지 크기로 조절
+                inCanvas.height = inH;
+                inCanvas.width = inW;
+                // 이미지 객체 --> 캔버스(화면)
+                inCtx.drawImage(imageObject,0,0,inW,inH);
+
+                // 메모리 할당 (3차원 배열)
+                inImage = new Array(3); // 3면
+                for(var m=0; m<3; m++) {
+                    inImage[m] = new Array(inH);
+                    for(let n=0; n<inH; n++)
+                        inImage[m][n] = new Array(inW);
+                }
+```
+
 - 대부분의 사진은 가로, 세로 크기가 다르므로 이미지에서 높이, 너비(imageObject.height, width)를 찾아서 변수에 입력 하여야 한다.
-- inCtx.drawImage  
-(입력받은 사진, 시작 x축 좌표, 시작 y축 좌표, 사진 가로, 세로)
-- RGB 포멧은 3차원으로 메모리 할당을 하여야 한다.  
-  (RGB, 가로, 세로)
-
-
-
-대표사진 삭제
-사진 설명을 입력하세요.
-
+- inCtx.drawImage(입력받은 사진, 시작 x축 좌표, 시작 y축 좌표, 사진 가로, 세로)
+- RGB 포멧은 3차원으로 메모리 할당을 하여야 한다.(RGB, 가로, 세로)
+```javascript
+var colorBlob = inCtx.getImageData(0,0,inW,inH);
+                var R, G, B, Alpha;
+                for (var i=0; i<inH; i++) {
+                    for (var k=0; k<inW; k++) {
+                        var pos = (i*inW + k) * 4; // 1픽셀 == 4byte
+                        R = colorBlob.data[pos+0];
+                        G = colorBlob.data[pos+1];
+                        B = colorBlob.data[pos+2];
+                        Alpha = colorBlob.data[pos+3];
+                        inImage[0][i][k] = R;
+                        inImage[1][i][k] = G;
+                        inImage[2][i][k] = B;
+                    }
+                }
+```
 - colorBlob이라는 변수에 사진의 정보 전체를 입력 시킨다.
-
 - 영상처리를 위해서는 각 점에 대한 정보를 알아야 하므로 RGB 포멧에 맞게 데이타를 추출해서 inImage[rgb][i][k]에 각각 입력 시켜야 한다.
-
 - RGB 데이타는 아래의 그림과 같이 R,G,B, Alpha 순서로 저장되어 있다.
 - 따라서 이중 for문 안에서 (i*inW + k) + 0 (i*inW + k) + 1 (i*inW + k) + 2 (i*inW + k) + 3 의 수식으로 R,G,B,Alpha 값을 추출할 수 있다.
-
-
-대표사진 삭제
-사진 설명을 입력하세요.
-
+![RGBalpha](https://user-images.githubusercontent.com/108249298/199449529-51854997-b8bf-4995-aaf4-9353eab4a0eb.png)
 
 ## ㅇ Display Image
+```javascript
+function displayImage() {
+            // 도화기 크기를 이미지 크기로 조절
+            outCanvas.height = outH;
+            outCanvas.width = outW;
 
-대표사진 삭제
-사진 설명을 입력하세요.
+            outPaper= outCtx.createImageData(outW, outH); // 이미지 크기의 빈 종이를 준비
+            for (let i=0; i<outH; i++) {
+                for (let k=0; k<outW; k++) {
+                    let R = outImage[0][i][k];  
+                    let G = outImage[1][i][k];  
+                    let B = outImage[2][i][k];  
+                    outPaper.data[(i*outW + k)*4 + 0] = R; // Red
+                    outPaper.data[(i*outW + k)*4 + 1] = G; // Green
+                    outPaper.data[(i*outW + k)*4 + 2] = B; // Blue
+                    outPaper.data[(i*outW + k)*4 + 3] = 255; // Alpha (투명도)
+                }
+            }
+            outCtx.putImageData(outPaper,0,0);
+        }
+```
 
 - Raw 포멧에서의 2차원을 RGB를 추가한 3차원으로 변환하여야 한다.
 
 
 ㅇ equal Image(동일 이미지 출력)  
 - 1차원 : RGB / 2차원 : 가로 / 3차원 : 세로
-
-대표사진 삭제
-사진 설명을 입력하세요.
-
-
+```javascript
+function equalImage() { // 동일 영상 알고리즘
+            // (중요!) 출력 이미지의 크기가 결정 ---> 알고리즘에 의존...
+            outH = inH;
+            outW = inW;
+            // 출력 영상의 3차원 메모리 할당
+            outImage = new Array(3); // 3면
+            for(var m=0; m<3; m++) {
+                outImage[m] = new Array(outH);
+                for(let n=0; n<outH; n++)
+                    outImage[m][n] = new Array(outW);
+            }
+            // **** 진짜 영상처리 알고리즘 *****
+            for (var rgb=0; rgb<3; rgb++) {
+                for (let i=0; i<inH; i++) {
+                    for (let k=0; k<inW; k++) {
+                        outImage[rgb][i][k] = inImage[rgb][i][k];
+                    }
+                }
+            }
+            // ******************************
+            displayImage();
+        }
+```
 > 이후의 각 기능은 나머지는 동일하여 핵심 알고리즘만 설명 하겠다.
 
 ## ㅇ function grayImage(그레이 스케일)
