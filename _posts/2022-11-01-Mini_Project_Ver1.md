@@ -61,7 +61,7 @@
     (생각보다 비싸게 느껴진다)
 
  - 따라서 모든 사람들이 사용할 수 없고 일부 제한된 사용자들만 S/W를 구매하여 활용하는 것이 현실이다.  
- - (일반 USER들은 그림판 등의 무료 S/W를 사용한다.)
+(일반 USER들은 그림판 등의 무료 S/W를 사용한다.)
 
 - 요즘의 추세는 모든 것이 Web에서 이루어 진다. PC 앞에 앉으면 Chrome 등의 Web 브라우저를 켜는 것으로 시작 하는 것이 너무나도 익숙하다.  
   이러한 모든 사용자들을 대상으로 한 S/W의 필요성이 대두되고 있다.
@@ -75,10 +75,8 @@
 # ㅇ function openImage
 
 1. infile 기능을 통하여 raw 파일을 PC의 메모리로 읽어들이기
-2. 이미지의 크기를 확인(raw 파일은 한 pixel이 1 byte 이므로 file size의 루트값이 사진의 크기가 된다.
+2. 이미지의 크기를 확인(raw 파일은 한 pixel이 1 byte 이므로 file size의 루트값이 사진의 크기가 된다.  
 ![사진의 크기](https://user-images.githubusercontent.com/108249298/199425439-ec80be00-5769-4c2f-89a1-5749efb92a09.png)
-
-
 
 3. 사진 크기 만큼의 메모리를 확보한다.(inH, inW)
 4. blob이라는 변수에 사진의 모든 정보를 한번에 가져온다.
@@ -183,7 +181,7 @@ function equalImage() { // 동일 영상 알고리즘
 5. 이후에는 영상처리 기법에 따라 아래의 ****진짜 영상처리 알고리즘**** 에 해당하는 코딩만 변경된다.
 (아래 부터는 각 코드와 이에 해당하는 알고리즘 위주로 서술 하겠다.)
 
-[Youtube 영상](https://www.youtube.com/watch?v=BVN6mdfI8Qk)
+      [Youtube 영상](https://www.youtube.com/watch?v=BVN6mdfI8Qk)
 
 # ㅇ 영상처리 알고리즘
 - 영상처리 알고리즘은 아래의 PPT에서 설명한 것과 같이 크게 4가지 종류로 나누고 있다.
@@ -196,7 +194,7 @@ function equalImage() { // 동일 영상 알고리즘
    ![화소점처리](https://user-images.githubusercontent.com/108249298/199425748-8c28cddd-60ff-499c-997d-15a5694e3b33.png)
 
 
-### ㅇ 영상 반전(reverse Image)
+# ㅇ 영상 반전(reverse Image)
 - 최대 음영(255)에서 사진의 각 점의 값을 빼면 오른쪽의 예시와 같이 표현 된다
    (밝은 곳은 어둡게, 어두운 곳은 밝게)
 
@@ -208,7 +206,7 @@ function equalImage() { // 동일 영상 알고리즘
             }
 ```
 
-##ㅇ 화소점 처리(2)
+## ㅇ 화소점 처리(2)
 
 ![평활화](https://user-images.githubusercontent.com/108249298/199426444-565382bc-8693-4623-b3e0-368565afef07.png)
 
@@ -221,7 +219,6 @@ function equalImage() { // 동일 영상 알고리즘
 ### stretching : 명암대비가 낮은 영상의 품질 향상
 
 1. 입력 영상의 최저, 최고 명도값을 구한 후 아래 공식에 대입하여 영상 출력
-
 2. 영상처리를 위한 여러가지 공식이 있음. 해당 공식은 과학자들이 여러 연구를 통하여 도출한 결과이다.
 (해당 공식에 대한 연구/분석은 하지 않고 영상처리를 위하여 활용하였다.)
 3. 위의 히스토그램에서 (c)의 히스토그램을 (d)로 변환하는 알고리즘 이다.
@@ -229,34 +226,34 @@ function equalImage() { // 동일 영상 알고리즘
 ![stretching fomula](https://user-images.githubusercontent.com/108249298/199426720-a9efccd1-cd5d-4e62-89ae-45c00c694c10.png)
 
 
-### 평활화 
+### ㅇ 평활화 
  - 어둡게 촬영된 영상의 히스토그램을 조절하여 명암분포가 빈약한 영상을 균일하게 처리
 
 1. 아래의 3단계(명암 빈도수 → 각 명암갑의 누적합 → 누적 빈도수의 정규화)의 공식을 수행
 
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfNiAg/MDAxNjYzMzE2MDUzNDYw.-6Uqo_0nl-eZCuKUg2PrvSKKKM87n1AIyDugEQRZ1twg.4JEvbNinLFwPolhlg1gwNglaV6zQIrchYEnU2FcPMnMg.PNG.hkpyh/image.png?type=w1)
+![stretching fomula](https://user-images.githubusercontent.com/108249298/199436971-550900da-4f97-4a2b-a127-20140ba88de0.png)
 
-평활화 각 단계별 설명 및 공식
+      평활화 각 단계별 설명 및 공식
 
 2. (a)의 원본영상은 사진의 명암이 가운데에 치우쳐저 있으나,
 3. 평활화 과정을 통하여 전체 명암범위(0~255)로 균일하게 영상 표현 가능
 ![평활화1](https://user-images.githubusercontent.com/108249298/199426824-c565dec6-4321-4343-afd9-22b72f4ce813.png)
 
 
-#ㅇ 기하학 처리
+# ㅇ 기하학 처리
 
 ![기하학처리1](https://user-images.githubusercontent.com/108249298/199426935-6ea692b1-21b0-4831-80c6-78cb9bf106f7.png)
 
 
 - 사진의 축소 : 출력영상(outImage)은 사용자가 입력한 배율(변수 : scale)에 따라서 입력영상 각 점의 일부만 가져와서 출력
 
-'''javascript
+```javascript
 for (let i = 0; i < inH; i++) {
                 for (let k = 0; k < inH; k++) {
                     outImage[parseInt(i / scale)][parseInt(k / scale)] = inImage[i][k];
                 }
             }
-'''
+```
 
 
 # ㅇ 영역 처리
@@ -265,7 +262,7 @@ for (let i = 0; i < inH; i++) {
 
 ![곱의합](https://user-images.githubusercontent.com/108249298/199427228-be6d27ae-3be3-4bff-9e8b-d8aa2ee211f6.png)
 
-> 입력 영상(inImage)에 가중치를 곱한 합을 출력(outImage)
+   입력 영상(inImage)에 가중치를 곱한 합을 출력(outImage)
 
 ![영역처리 알고리즘 모식도](https://user-images.githubusercontent.com/108249298/199427313-1ae3bec7-2d3f-4a54-9446-a6061b1dc5e0.png)
 
