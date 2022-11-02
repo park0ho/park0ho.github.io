@@ -164,27 +164,31 @@ function equalImage() { // 동일 영상 알고리즘
 
 ## ㅇ function grayImage(그레이 스케일)
 
-대표사진 삭제
-사진 설명을 입력하세요.
+```javascript
+for (let i=0; i<inH; i++) {
+                for (let k=0; k<inW; k++) {
+                    let sumValue = inImage[0][i][k]  + inImage[1][i][k] + inImage[2][i][k] ;
+                    let avgValue = sumValue / 3;
+                    
+                    outImage[0][i][k] = avgValue;
+                    outImage[1][i][k] = avgValue;
+                    outImage[2][i][k] = avgValue;
+                }
+            }
+```
 
 - gray scale은 칼라로 되어 있는 사진을 흑백으로 바꾸는 과정을 의미한다.
 
 - 한 점에서 R,G,B 값을 모두 더한 후 3으로 나눈 값이 그 결과이다.
 
-
-
-대표사진 삭제
-사진 설명을 입력하세요.
+![grayimageResult](https://user-images.githubusercontent.com/108249298/199450432-126675cd-5fcb-4eb2-ae5c-7e00efb322b5.png)
 
 
 ## ㅇ Event Listener - Mouse
 
 - 사용자의 요구사항에 따라서 S/W 및 소스코드가 변경 되어야 하는 경우가 많다.
-
 - 그 예시로 이번 프로젝트에서는 마우스 입력에 대한 Event Lisener에 대한 코딩을 수행하였다.
-
 - 그 전까지는 사진 전체에 대하여 원하는 효과를 선택 및 처리하여 출력하였으나,
-
 - 사용자가 원하는 영역을 사각형으로 드래그 하여 표시하면 해당 부분에 대해서만 원하는 효과를 적용한다.
 
 
@@ -195,52 +199,67 @@ function equalImage() { // 동일 영상 알고리즘
 > Listener 라는 단어 자체가 '듣는 사람'이므로 사용자(또는 특정 동작)를 바라보며 조건에 맞는 동작이 수행되기를 계속 기다린다. 
 마치 레스토랑의 종업원이 홀을 바라보며 손님이 부르기를 기다리는 것과 마찬가지라고 생각하면 될 것이다.
 
+![eventListener](https://user-images.githubusercontent.com/108249298/199450583-00c6fda9-ab81-4b7e-8fb6-46e98226936d.png)
 
-대표사진 삭제
-(ppt 10/17) Event Listener
 
 > 여러 종류가 있으나 이번 프로젝트에서는 mousedown, up, move에 대하여만 코딩 하였다.
-
 - mousedown : 마우스 왼쪽버튼 누를 떄
 - mouseup : 마우스 왼쪽버튼에서 손을 뗄 때
 - mousemove : 마우스를 이동시킬 때(x,y 좌표가 변경될 때)
 
-
 ## ㅇ function onEventListener
 - mousedown/up/move에 대한 listener 켜기
-
-대표사진 삭제
-사진 설명을 입력하세요.
-
+```javascript
+// 마우스 이벤트 리스너 켜기
+            inCanvas.addEventListener("mousedown", __downMouse, false);
+            inCanvas.addEventListener("mouseup", __upMouse, false);
+            inCanvas.addEventListener("mousemove", __moveMouse, false);
+```
 
 ## ㅇ function reverseImage_mouse
-
-대표사진 삭제
-S/W UI(사용자 입력 부분)
+![ui](https://user-images.githubusercontent.com/108249298/199451019-2d592dce-2423-46d5-a83a-50c4412f457c.png)
 
 - 상기 화면은 본 프로젝트에서 코딩한 S/W의 UI(User Interface, 사용자 입력)이다.
-
 - 마우스로 영역 선택 아래의 '영상반전'을 클릭하면 아래 함수가 실행된다.
 
+![reverseimage](https://user-images.githubusercontent.com/108249298/199451226-39b7d538-e517-40fc-9283-8b9861369fa3.png)
 
-
-대표사진 삭제
-사진 설명을 입력하세요.
 
 - EventListener의 mousedown/up/move를 모두 실행한다.
-
 - function __downMouse : 사용자가 마우스 왼쪽 버튼을 클릭 하였을 때 실행
-
     a. 마우스의 x,y좌표를 변수 startX,Y에 각각 입력 받는다.
     b. pressYN 변수를 true로 변경
     c. 현재 상태를 imageData에 입력
 
 - function __upMouse : 사용자가 마우스 왼쪽버튼을 땔 때 실행
+```javascript
+ function __upMouse(event) {
+                inCtx.putImageData(imageData,0,0);
+                endX = event.offsetX;
+                endY = event.offsetY;
+                // 선택한 네모 박스 안쪽만 영상처리 되기
+                // 시작과 끝을 재배치
+                if (startX > endX) {
+                    let tmp = startX;
+                    startX = endX;
+                    endX = tmp;
+                }
+                if (startY > endY) {
+                    let tmp = startY;
+                    startY = endY;
+                    endY = tmp;
+                }
 
+                // 마우스 이벤트 리스터 끄기
+                inCanvas.removeEventListener("mousedown", __downMouse, false);
+                inCanvas.removeEventListener("mouseup", __upMouse, false);
+                inCanvas.removeEventListener("mousemove", __moveMouse, false);
 
+                pressYN = false;
 
-대표사진 삭제
-사진 설명을 입력하세요.
+                __reverseImage();                
+            }
+```
 
 - 마우스의 x,y좌표를 변수 endX,Y에 각각 입력 받는다.
 - startXY, endXY 값을 재배치 한다.(코딩 기법 중에 하나)
@@ -251,9 +270,7 @@ S/W UI(사용자 입력 부분)
 - 이후에 reverseImage 함수 실행(startXY ~ endXY) 범위에서만 reverseImage가 실행된다.
 
 아래 PPT는 좌측 원본 영상에서 빨간색 네모 부분에 대해서 revese 처리를 수행한 결과이다.
-
-대표사진 삭제
-(ppt 09/17) Event Listener에서 선택 영역만 반전 하였을 때의 결과
+![eventlistenerResult](https://user-images.githubusercontent.com/108249298/199451533-208431ae-3dd5-4db2-8fc5-e96bec259992.png)
 
 - function __moveMouse
 
