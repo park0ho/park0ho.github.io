@@ -1,29 +1,28 @@
 Mini Project Ver 1.0
 ====================
 
-**ㅇ 교육과정**
+#ㅇ 교육과정
 
-\- 기 간 : '22. 8. 17.(수) ~ 12.30.(금)
+- 기 간 : '22. 8. 17.(수) ~ 12.30.(금)
 
-\- 기 관 : 대한상공회의소 서울기술교육센터
+- 기 관 : 대한상공회의소 서울기술교육센터
 
-\- 교육명 : AI활용 Big Data 시스템 개발자
-
-
-
-**ㅇ 교육내용 : JavaScript(Html 5 기반)**
+- 교육명 : AI활용 Big Data 시스템 개발자
 
 
+#ㅇ 교육내용 : JavaScript(Html 5 기반)
 
-**ㅇ Project : Mini Project(Ver 1.0)**
 
-\- 언어 : JavaScipt
 
-\- 환경 : Web(Chrome에 최적화)
+#ㅇ Project : Mini Project(Ver 1.0)
 
-\- 내용 : Digital Image Processing Using JavaScript
+ - 언어 : JavaScipt
 
-\- 지도교수 : 우재남
+ - 환경 : Web(Chrome에 최적화)
+
+ - 내용 : Digital Image Processing Using JavaScript
+
+ - 지도교수 : 우재남
 
 
 
@@ -39,27 +38,22 @@ JavaScript를 활용해서 Web에 'PhotoShop' 또는 스마트폰 APP 중에서 
 
 
 
-**ㅇ 제목 : Digital Image Processing Using JavaScript**
-
-
-
+#ㅇ 제목 : Digital Image Processing Using JavaScript
 
 ![01-ppt01](https://user-images.githubusercontent.com/108249298/199362667-369e2e2b-03de-49b0-9f62-75ddc6bf495a.png)
 
 
-\- 영상처리를 JavaScript로 구현한 사례는 찾아보기 힘들다. 내가 가르친 학생들 외에는...(우재남 교수 曰)
+> 영상처리를 JavaScript로 구현한 사례는 찾아보기 힘들다. 내가 가르친 학생들 외에는...(우재남 교수 曰)
 
-\- 처음에 문법 부터 시작해서 * 그리기, 구구단....으로 연상되는 일련의 코딩 학습 과정이 있다.
+- 처음에 문법 부터 시작해서 * 그리기, 구구단....으로 연상되는 일련의 코딩 학습 과정이 있다.
 
-\- 하지만 우재남 교수님의 강의는 달랐다. 처음에 간단한 문법은 당연히 배워야 하고 그 이후에는 영상처리의
+- 하지만 우재남 교수님의 강의는 달랐다. 처음에 간단한 문법은 당연히 배워야 하고 그 이후에는 영상처리의 각 코드를 기반으로 하여 수업을 하였고, 그 과정이 나는 좋았다.
 
-각 코드를 기반으로 하여 수업을 하였고, 그 과정이 나는 좋았다.
-
-예전(약 15년 전) 대학생때 배운 C언어는 구구단, 배열 이후 '포인터'를 배우다가 힘겨워 했던 기억이 났다.
+- 예전(약 15년 전) 대학생때 배운 C언어는 구구단, 배열 이후 '포인터'를 배우다가 힘겨워 했던 기억이 났다.
 
 
 
-**ㅇ 목차 : 소개, 알고리즘, 추후계획**
+#ㅇ 목차 : 소개, 알고리즘, 추후계획
 
 
 
