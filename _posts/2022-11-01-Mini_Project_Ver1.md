@@ -1,4 +1,4 @@
-#ㅇ 교육과정 
+# ㅇ 교육과정 
 
 - 기 간 : '22. 8. 17.(수) ~ 12.30.(금)
 
@@ -34,7 +34,7 @@ JavaScript를 활용해서 Web에 'PhotoShop' 또는 스마트폰 APP 중에서 
 
 
 
-#ㅇ 제목 : Digital Image Processing Using JavaScript
+# ㅇ 제목 : Digital Image Processing Using JavaScript
 
 ![01-ppt01](https://user-images.githubusercontent.com/108249298/199362667-369e2e2b-03de-49b0-9f62-75ddc6bf495a.png)
 
@@ -49,85 +49,55 @@ JavaScript를 활용해서 Web에 'PhotoShop' 또는 스마트폰 APP 중에서 
 
 
 
-#ㅇ 목차 : 소개, 알고리즘, 추후계획
+# ㅇ 목차 : 소개, 알고리즘, 추후계획
 
 
 
 ![img](https://blogfiles.pstatic.net/MjAyMjA5MTRfMTU4/MDAxNjYzMTExMzg3OTgy.wtCigUDDAJOQVYuhOLBJTW3OP0SZn6_j3PweFCp3Cj4g.s6y2eLVb-7KuO2dAbDSU3eCCR4ifbeAQ5-fRmDQksV0g.PNG.hkpyh/image.png?type=w1)
 
-대표사진 삭제
 
-(PPT 2/15) 목차
-
-\- Simple is Best. 목차는 군더더기 없이 간단히 구성하였다.
+- Simple is Best. 목차는 군더더기 없이 간단히 구성하였다.
 
 (지금 보니 구글에서 찾은 이 템플릿 꽤 마음에 든다.)
 
 
 
-**ㅇ Introduce of Digital Image Processing**
-
-
+# ㅇ Introduce of Digital Image Processing
 
 ![img](https://blogfiles.pstatic.net/MjAyMjA5MTRfNTAg/MDAxNjYzMTExNTg1NjIy.RSb_d0lhXuyY8u74Zg21EJlChigqnMWDPkp_m0VvNWog.0UbpyyLvvihJZmkzklHo_Dtf7odSuPmVTI9-MmiX7eMg.PNG.hkpyh/image.png?type=w1)
 
-대표사진 삭제
 
-(PPT 4/15) Introduce of Digital Image Processing
-
-\- 우리가 일상에서 접하는 모든 사진, 영상은 (당연히) Analog 이다.
-
+- 우리가 일상에서 접하는 모든 사진, 영상은 (당연히) Analog 이다.
 (Analog, Digital 차이점은 언급하지 않겠다. 혹시 헷갈리는 분들은 Google 께서 친절히 답변해 주실거다.)
 
-\- 이번 코딩에서는 .RAW의 사진을 기반으로 작성하였다.
+- 이번 코딩에서는 .RAW의 사진을 기반으로 작성하였다.
 
-\- Analog인 영상을 Digital로 변환하여 PC로 입력 받으면 PPT 4/15 우측의 그림과 같이 인식을 하게 된다.
+- Analog인 영상을 Digital로 변환하여 PC로 입력 받으면 PPT 4/15 우측의 그림과 같이 인식을 하게 된다.
 
-\- 사진의 포멧 및 크기에 따라 달라지지만 이번 코딩에서는 가로/세로 각각 256, 512 pixel을 기준으로 하였다.
+- 사진의 포멧 및 크기에 따라 달라지지만 이번 코딩에서는 가로/세로 각각 256, 512 pixel을 기준으로 하였다.
+(다른 크기도 가능하지만 512 이상의 크기에서는 검증하지 않았다. 추후 color 사진 코딩시에 1024 이상의 사진 및 가로/세로 크기가 다른 사진에 대해서 코딩 및 확인 예정이다.)
 
-(다른 크기도 가능하지만 512 이상의 크기에서는 검증하지 않았다. 추후 color 사진 코딩시에 1024 이상의
+- 사진의 좌측 상단이 (0,0)의 좌표이며 가로 512, 세로 512 각각의 좌표에 따라서 0~255의 값을 가지게 된다.
 
-사진 및 가로/세로 크기가 다른 사진에 대해서 코딩 및 확인 예정이다.)
-
-\- 사진의 좌측 상단이 (0,0)의 좌표이며 가로 512, 세로 512 각각의 좌표에 따라서 0~255의 값을 가지게 된다.
-
-\- 각각의 좌표에 따른 값을 필요한 영상처리 효과에 따라 각기 다른 Algorithm을 적용하여 DIgital로 처리한다.
+- 각각의 좌표에 따른 값을 필요한 영상처리 효과에 따라 각기 다른 Algorithm을 적용하여 DIgital로 처리한다.
 
 
 
-**ㅇ Why Using Web & JavaScript**
-
-
+# ㅇ Why Using Web & JavaScript
 
 ![img](https://blogfiles.pstatic.net/MjAyMjA5MTRfMTMw/MDAxNjYzMTEyNTQ5NDc5.RS64uo44eRoQeVO3QQAlWNN8QZJH6fI-zj9ND0R-I_Ag.P_KH9uT7Qo43BXSpp4VubmCjPb4iqIHvb32GKGbX-AIg.PNG.hkpyh/image.png?type=w1)
 
-대표사진 삭제
+- 기존(As is)에는 Photoshop으로 대표되는 각종 S/W를 활용하여 사진 편집을 하였다. 하지만 여러가지 단점이 존재한다. 사진의 편집을 위해서 S/W를 구입, 설치가 필요하고 일정 수준 이상의 S/W 사용을 위해서는 당연히 비용의 지출도 필요하였다.(생각보다 비싸게 느껴진다)
 
-(PPT 5/15) Why Using Web & JavaScript
+- 따라서 모든 사람들이 사용할 수 없고 일부 제한된 사용자들만 S/W를 구매하여 활용하는 것이 현실이다.(일반 USER들은 그림판 등의 무료 S/W를 사용한다.)
 
-\- 기존(As is)에는 Photoshop으로 대표되는 각종 S/W를 활용하여 사진 편집을 하였다. 하지만 여러가지 단점이
+- 요즘의 추세는 모든 것이 Web에서 이루어 진다. PC 앞에 앉으면 Chrome 등의 Web 브라우저를 켜는 것으로 시작 하는 것이 너무나도 익숙하다. 이러한 모든 사용자들을 대상으로 한 S/W의 필요성이 대두되고 있다.
 
-존재한다. 사진의 편집을 위해서 S/W를 구입, 설치가 필요하고 일정 수준 이상의 S/W 사용을 위해서는 당연히
+- PhotoShop 등의 S/W와 유사한 기능을 Web 기반에서 수행하기 위한 코딩이 필요하고 그에 가장 적합한 언어는 JavaScript이다.
 
-비용의 지출도 필요하였다.(생각보다 비싸게 느껴진다)
+- HTML5와 JavaScript를 활용하면 Web에서도 이미지, 영상의 처리가 가능하며 Chrome(또는 Edge)로 누구나 사용할 수 있는 장점이 있다.
 
-따라서 모든 사람들이 사용할 수 없고 일부 제한된 사용자들만 S/W를 구매하여 활용하는 것이 현실이다.
-
-(일반 USER들은 그림판 등의 무료 S/W를 사용한다.)
-
-\- 요즘의 추세는 모든 것이 Web에서 이루어 진다. PC 앞에 앉으면 Chrome 등의 Web 브라우저를 켜는 것으로
-
-시작 하는 것이 너무나도 익숙하다. 이러한 모든 사용자들을 대상으로 한 S/W의 필요성이 대두되고 있다.
-
-\- PhotoShop 등의 S/W와 유사한 기능을 Web 기반에서 수행하기 위한 코딩이 필요하고
-
-그에 가장 적합한 언어는 JavaScript이다.
-
-\- HTML5와 JavaScript를 활용하면 Web에서도 이미지, 영상의 처리가 가능하며 Chrome(또는 Edge)로
-
-누구나 사용할 수 있는 장점이 있다.
-
-\- 아래는 본 코딩를 그림으로 나타낸 구조도 이다. 구조도에 해당하는 소스코드는 아래에 자세히 설명 하겠다.
+- 아래는 본 코딩를 그림으로 나타낸 구조도 이다. 구조도에 해당하는 소스코드는 아래에 자세히 설명 하겠다.
 
 
 
