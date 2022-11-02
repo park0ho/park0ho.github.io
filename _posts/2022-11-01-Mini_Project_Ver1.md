@@ -13,10 +13,10 @@
 - 내용 : Digital Image Processing Using JavaScript
 - 지도교수 : 우재남
 
-상기 내용은 본 포스팅의 개요이다.
-대한상공회의소 서울기술교육센터에서 'AI 활용 Big Data 시스템 개발자' 과정을 수강하면서 배운 내용이다.
-JavaScript를 활용해서 Web에 'PhotoShop' 또는 스마트폰 APP 중에서 사진 편집 하는 기능을 구현하였다.
-아래부터는 작성한 PPT와 그림 및 코드 위주로 기록하여 추후에 비슷한 코딩시 참고 하고자 한다.
+  상기 내용은 본 포스팅의 개요이다.
+  대한상공회의소 서울기술교육센터에서 'AI 활용 Big Data 시스템 개발자' 과정을 수강하면서 배운 내용이다.
+  JavaScript를 활용해서 Web에 'PhotoShop' 또는 스마트폰 APP 중에서 사진 편집 하는 기능을 구현하였다.
+  아래부터는 작성한 PPT와 그림 및 코드 위주로 기록하여 추후에 비슷한 코딩시 참고 하고자 한다.
 
 # ㅇ 제목 : Digital Image Processing Using JavaScript
 
@@ -30,7 +30,8 @@ JavaScript를 활용해서 Web에 'PhotoShop' 또는 스마트폰 APP 중에서 
 
 # ㅇ 목차 : 소개, 알고리즘, 추후계획
 
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTRfMTU4/MDAxNjYzMTExMzg3OTgy.wtCigUDDAJOQVYuhOLBJTW3OP0SZn6_j3PweFCp3Cj4g.s6y2eLVb-7KuO2dAbDSU3eCCR4ifbeAQ5-fRmDQksV0g.PNG.hkpyh/image.png?type=w1)
+![ppt contents](https://user-images.githubusercontent.com/108249298/199422608-3ea0f8bb-af5e-420c-8e28-6d19b6ff452b.png)
+
 - Simple is Best. 목차는 군더더기 없이 간단히 구성하였다.
   (지금 보니 구글에서 찾은 이 템플릿 꽤 마음에 든다.)
 
