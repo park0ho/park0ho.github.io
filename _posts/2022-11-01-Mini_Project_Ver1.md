@@ -278,7 +278,7 @@ for (let i = 0; i < inH; i++) {
 - 좌측은 3x3 배열, 우측은 5x5 배열의 mask를 활용한 블러링(blurring) 알고리즘 이다.
 ![blurring mask](https://user-images.githubusercontent.com/108249298/199427629-9545398a-41f5-4aa9-8a13-9bf6eae652ff.png)
 
-블러링(blurring) 3x3 , 5x5 mask
+                   블러링(blurring) 3x3 , 5x5 mask
 ![code of mask](https://user-images.githubusercontent.com/108249298/199427701-2814be69-349c-411b-9cb2-365d8f607a1b.png)
 
 - 1번 : blurring 3x3 마스크
@@ -293,35 +293,32 @@ for (let i = 0; i < inH; i++) {
 
 - 곱의 합을 구현하는 코드는 아래와 같다.
 
+'''javascript
+ for (let m = 0; m < 5; m++) {
+                        for (let n = 0; n < 5; n++) {
+                            S += tmpInImage[i + m][k + n] * mask[m][n];
+                        }
+                    }
+'''
 
-
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfMTAg/MDAxNjYzMzE4NzcwODAw.bqVlc2eB-R7w-dT_QNwvT1J4EVHouYf07AwZM9m-55Ug.puxJnO6sOWxvVnnlhcY6Um-fKNGmth9BSif9jcmaEqEg.PNG.hkpyh/image.png?type=w1)
-
-
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfNTYg/MDAxNjYzMzE3NTE3MTQw.K4xMsHhB31ksw06CT26rLRIXM6-cxSoF1XV6y6jtb6Ag.SpYp0yBWTTjNo8Sg7lNBtLWf8iUmQwfFzQ9bpQFlcSgg.PNG.hkpyh/image.png?type=w1)
-
-
-(ppt 12/15) Example of Digital Image Processing - 영역 처리[2](edge 검출)
+![edge 검출](https://user-images.githubusercontent.com/108249298/199431118-90f32dec-e620-4d66-89c6-9eb1026ec2f0.png)
 
 - 아래는 주요 알고리즘에 따른 mask 이다.
+![mask](https://user-images.githubusercontent.com/108249298/199431205-0a9f644a-e3d2-4325-9865-d9b711046925.png)
 
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfMTg4/MDAxNjYzMzE5MzkyMzMw.4-X8F-RR6xew84lM9TuHD2rgVJi7cmT6wJN7QLfmzTgg.5nJM2sZW_LaZCXn_5i4BUaq9TzqpB0EAZegIPA1y1bUg.PNG.hkpyh/image.png?type=w1)
 
 # ㅇ Future Plan
 
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfNjUg/MDAxNjYzMzE5NDg0NTAy.HB2z1Wfm_72Y4Uuug_309mlXz86R2bffiOwP7GU_gQsg.l2h8oNamKoCrwu3hH6znaA5BYTWVj8Cp-IEGJI-zocUg.PNG.hkpyh/image.png?type=w1)
+![future plan](https://user-images.githubusercontent.com/108249298/199431294-a7678132-044b-4c36-8a91-77078dd5f66d.png)
 
-(ppt 14/15) Future Plan of Digital Image Processing
 
 - 현재는 JavaScript 환경 구성 및 흑백 중에서도 raw 포멧의 영상에 대한 코딩만 완료 하였다.
 - '22년 9월에는 칼라 영상의 구조에 대한 학습을 통해서 jpg, png 등의 다양한 포멧에 대하여 진행 할 것이다.
 - 동영상은(음성 제외, 영상만) 칼라(또는 흑백) 사진을 1초당 수십장(또는 그 이상) 빠르게 보여지는 것이므로 칼라 영상 이후에 지속적인 학습을 통해서 구현 할 것이다.
 - 최종 목표는 Web에 구현 및 상용화를 통하여 이익을 추구하는 것이다.
 
+![최종](https://user-images.githubusercontent.com/108249298/199431361-956cecde-c6cb-486d-9066-b9c3393037af.png)
 
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfMjY3/MDAxNjYzMzE5ODg4MjE1.gKuwj_WEaKLdyuK98Lojg3L8mJ5UNuuzrP8C_hADqn8g.6ayInQ93ExrJx6ntc_SvJdCpSosW_wSYNlrkKNNi_wQg.PNG.hkpyh/image.png?type=w1)
-
-(ppt 15/15) 최종적인 목표
 
 # ㅇ (번외) web 시안
 - 상단에 'JavaScript 활용한 영상처리 프로그램' 제목 입력
@@ -332,11 +329,11 @@ for (let i = 0; i < inH; i++) {
 > 2. 좌측 아래에서 원하는 처리 방법 선택
 > 3. 영상처리 전/후 비교를 통해서 원하는 영상처리 효과 확인
 
+![ui](https://user-images.githubusercontent.com/108249298/199431455-8a6b9c83-dd63-450b-933a-1381fbe62e11.png)
 
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfMiAg/MDAxNjYzMzIwMDg4NjQ2.bXr5AxGEeIrQjQKTJgAbR1ZrU1vNmbI2uGstP6V9_M0g.9qKC4hiy8yk9J8NVm5twLIGJyGpAu0rdrU_6GyqlBS0g.PNG.hkpyh/image.png?type=w1)
 
+![ui2](https://user-images.githubusercontent.com/108249298/199431504-8e212c90-1b45-4b0b-95de-89dfb768047c.png)
 
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfMTA5/MDAxNjYzMzIwMTExOTg2.-wY8ddrgz2oNOzihyWCDHjstIRZeNLqxI4Z9JDZ5kkAg.22aDBkl48yXJRS7abrXYb0a-73Xoz-XrDntlOZ5afMQg.PNG.hkpyh/image.png?type=w1)
 
 
 # ㅇ 결 론
