@@ -278,6 +278,7 @@ for (let i = 0; i < inH; i++) {
 ![blurring mask](https://user-images.githubusercontent.com/108249298/199427629-9545398a-41f5-4aa9-8a13-9bf6eae652ff.png)
 
                    블러링(blurring) 3x3 , 5x5 mask
+                   
 ![code of mask](https://user-images.githubusercontent.com/108249298/199427701-2814be69-349c-411b-9cb2-365d8f607a1b.png)
 
 - 1번 : blurring 3x3 마스크
@@ -292,17 +293,17 @@ for (let i = 0; i < inH; i++) {
 
 - 곱의 합을 구현하는 코드는 아래와 같다.
 
-'''javascript
+```javascript
  for (let m = 0; m < 5; m++) {
                         for (let n = 0; n < 5; n++) {
                             S += tmpInImage[i + m][k + n] * mask[m][n];
                         }
                     }
-'''
+```
 
 ![edge 검출](https://user-images.githubusercontent.com/108249298/199431118-90f32dec-e620-4d66-89c6-9eb1026ec2f0.png)
 
-- 아래는 주요 알고리즘에 따른 mask 이다.
+- 아래는 주요 알고리즘에 따른 mask 이다.  
 ![mask](https://user-images.githubusercontent.com/108249298/199431205-0a9f644a-e3d2-4325-9865-d9b711046925.png)
 
 
