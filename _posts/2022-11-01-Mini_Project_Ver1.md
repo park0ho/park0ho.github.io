@@ -33,12 +33,12 @@
 ![ppt contents](https://user-images.githubusercontent.com/108249298/199422608-3ea0f8bb-af5e-420c-8e28-6d19b6ff452b.png)
 
 - Simple is Best. 목차는 군더더기 없이 간단히 구성하였다.
+- 
   (지금 보니 구글에서 찾은 이 템플릿 꽤 마음에 든다.)
 
 # ㅇ Introduce of Digital Image Processing
 
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTRfNTAg/MDAxNjYzMTExNTg1NjIy.RSb_d0lhXuyY8u74Zg21EJlChigqnMWDPkp_m0VvNWog.0UbpyyLvvihJZmkzklHo_Dtf7odSuPmVTI9-MmiX7eMg.PNG.hkpyh/image.png?type=w1)
-
+![Introduce of Digital Image Processing](https://user-images.githubusercontent.com/108249298/199424231-0d9e3d7f-8d0f-4e3e-8e0b-c8a310aee196.png)
 
 - 우리가 일상에서 접하는 모든 사진, 영상은 (당연히) Analog 이다.
   (Analog, Digital 차이점은 언급하지 않겠다. 혹시 헷갈리는 분들은 Google 께서 친절히 답변해 주실거다.)
@@ -52,7 +52,8 @@
 
 # ㅇ Why Using Web & JavaScript
 
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTRfMTMw/MDAxNjYzMTEyNTQ5NDc5.RS64uo44eRoQeVO3QQAlWNN8QZJH6fI-zj9ND0R-I_Ag.P_KH9uT7Qo43BXSpp4VubmCjPb4iqIHvb32GKGbX-AIg.PNG.hkpyh/image.png?type=w1)
+![why using web and javascript](https://user-images.githubusercontent.com/108249298/199424366-d71c6818-71e7-4145-a1c2-56fcf672e06f.png)
+
 
 - 기존(As is)에는 Photoshop으로 대표되는 각종 S/W를 활용하여 사진 편집을 하였다. 하지만 여러가지 단점이 존재한다. 사진의 편집을 위해서 S/W를 구입, 설치가 필요하고 일정 수준 이상의 S/W 사용을 위해서는 당연히 비용의 지출도 필요하였다.(생각보다 비싸게 느껴진다)
 
@@ -65,16 +66,11 @@
 - HTML5와 JavaScript를 활용하면 Web에서도 이미지, 영상의 처리가 가능하며 Chrome(또는 Edge)로 누구나 사용할 수 있는 장점이 있다.
 
 - 아래는 본 코딩를 그림으로 나타낸 구조도 이다. 구조도에 해당하는 소스코드는 아래에 자세히 설명 하겠다.
+- 
 
+![코딩구조도](https://user-images.githubusercontent.com/108249298/199424575-512aae7f-9862-43a2-887d-eff892ab9609.png)
 
-
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTRfMTUg/MDAxNjYzMTEyMDI3Mjcw.XYZllFLRqlhM9buww_hCyvlyGXqG9xjQNch5_ilkyxkg.Iy23kx6VyD7ZFXSAvAcMdWXq1gthpp9zxkpZgCT6Q6cg.PNG.hkpyh/image.png?type=w1)
-
-대표사진 삭제
-
-(설명 1) 코딩 구조도
-
-#  function openImage
+# ㅇ function openImage
 
 1. infile 기능을 통하여 raw 파일을 PC의 메모리로 읽어들이기
 2. 이미지의 크기를 확인(raw 파일은 한 pixel이 1 byte 이므로 file size의 루트값이 사진의 크기가 된다.
@@ -89,6 +85,7 @@ $사진의크기\left(가로,\ 세로\ 값\right)\ =\ \sqrt{file\ size}$사진�
 7. JavaScript에서는 변수(inH, inW)에 입력되어 있는 사진의 정보를 Canvas에 바로 입력 할 수 없다. 따라서 종이 하나(inPaper)를 준비해서 그 종이에 inH,inW의 정보를 한 점씩 찍은 다음에 inPaper를 Canvas에 붙이는 방식을 사용한다.
 > 추후에 JavaScript가 발전하면 해당 기능이 개선되지 않을까 조심스럽게 생각해본다.
 
+![사진의 크기](https://user-images.githubusercontent.com/108249298/199424673-11c71f8f-8a62-4683-8105-b800df49cc09.png)
 
 
 ```javascript
@@ -132,7 +129,7 @@ function openImage() {
         }
 ```
 
-##  function displayImage : Canvas에 사진을 출력하기 위한 함수
+## ㅇ function displayImage : Canvas에 사진을 출력하기 위한 함수
 
 1. Canvas를 출력이미지의 크기로 설정(outCanvas)
 2. 이미지 크기의 빈 종이(outPaper)에 outImage[][]에 저장되어 있는 사진의 값을 한 점씩 출력
@@ -157,7 +154,7 @@ function displayImage() {
         }
 ```
 
-## 동일 영상 시현(equalImage)
+## ㅇ 동일 영상 시현(equalImage)
 
 ```javascript
 function equalImage() { // 동일 영상 알고리즘
@@ -185,13 +182,6 @@ function equalImage() { // 동일 영상 알고리즘
 4. 동일 영상이므로 outImage = inImage
 5. 이후에는 영상처리 기법에 따라 아래의 ****진짜 영상처리 알고리즘**** 에 해당하는 코딩만 변경된다.
 (아래 부터는 각 코드와 이에 해당하는 알고리즘 위주로 서술 하겠다.)
-
-![img](https://phinf.pstatic.net/image.nmv/blog_2022_09_18_1531/0bb123de-3716-11ed-a57b-505dac8c385b_01.jpg)
-
-00:59
-
-미니프로젝트(Ver_1) 영상**미니프로젝트(Ver_1) 영상**
-
 
 
 유투브 : https://www.youtube.com/watch?v=BVN6mdfI8Qk
