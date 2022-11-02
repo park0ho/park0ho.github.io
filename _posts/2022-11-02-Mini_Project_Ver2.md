@@ -273,24 +273,37 @@ for (let i=0; i<inH; i++) {
 ![eventlistenerResult](https://user-images.githubusercontent.com/108249298/199451533-208431ae-3dd5-4db2-8fc5-e96bec259992.png)
 
 - function __moveMouse
+```javascript
+ function __moveMouse(event) {
+                if (!pressYN)
+                    return;
 
-대표사진 삭제
-사진 설명을 입력하세요.
+                inCtx.putImageData(imageData,0,0);
+
+                endX = event.offsetX;
+                endY = event.offsetY;
+                
+                inCtx.beginPath(); // 선그리기 시작
+                inCtx.strokeStyle = 'blue';
+                inCtx.lineWidth = 1;
+
+                inCtx.rect(startX, startY, (endX-startX), (endY-startY));
+
+                inCtx.stroke();
+                inCtx.closePath(); // 선그리기 끝
+
+            }
+```
 
 a. 사용자가 선택하고 있는 영역을 시각적으로 보여주기 위해서 마우스 시작점 ~ 끝점 까지 사각형을 그린다.(러버 밴드)
 
 
 #### ㅇ function __reverseImage : 사용자가 지정한 네모 박스 안쪽만 reverseImage 수행
+![code of reverseImage](https://user-images.githubusercontent.com/108249298/199452523-adbed500-16fe-41ea-9a78-6d610e394290.png)
 
-대표사진 삭제
-사진 설명을 입력하세요.
+## ㅇ 이미지 색상 추출 및 변경
+![rgbHSV](https://user-images.githubusercontent.com/108249298/199452605-ee23b834-70b3-47c4-81bb-3506ed3bd6ac.png)
 
-
-##ㅇ 이미지 색상 추출 및 변경
-
-
-대표사진 삭제
-(ppt 12/17) RGB, HSV 차이점
 - 상기 PPT는 RGB, HSV에 대한 설명이다.
 - 주로 색을 추출하기 위한 코딩을 수행하려고 하는데, RGB로는 코딩이 어려워지고 한계가 있다고 한다.
 (실제로 코딩을 해보지는 못하였다)
@@ -298,67 +311,146 @@ a. 사용자가 선택하고 있는 영역을 시각적으로 보여주기 위�
 - 그 이후에 JPG파일의 포멧에 맞게 다시 RGB로 변환하여 화면에 출력하게 된다.
 - 아래는 교수님께서 작성하신 RGB, HSV 간 변환 함수이다.
 (수학적인 공식을 코딩으로 나타낸 것이다. 이해 보다는 함수의 사용에 초점을 맞추었다)
+```javascript
+ function rgb2hsv(r, g, b) {
+            var max = Math.max(r, g, b), min = Math.min(r, g, b),
+                d = max - min,
+                h,
+                s = (max === 0 ? 0 : d / max),
+                v = max / 255;
 
-대표사진 삭제
- 설명을 입력하세요.
+            switch (max) {
+                case min: h = 0; break;
+                case r: h = (g - b) + d * (g < b ? 6: 0); h /= 6 * d; break;
+                case g: h = (b - r) + d * 2; h /= 6 * d; break;
+                case b: h = (r - g) + d * 4; h /= 6 * d; break;
+            }
+            return {
+                h: h,    s: s,    v: v
+            };
+        }
 
-대표사진 삭제
-사진 설명을 입력하세요.
+        function hsv2rgb(h, s, v) {
+            var r, g, b, i, f, p, q, t;
+
+            h = h*360;  s = s*100;    v = v*100;
+
+            h = Math.max(0, Math.min(360, h));
+            s = Math.max(0, Math.min(100, s));
+            v = Math.max(0, Math.min(100, v));
+            
+            h /= 360;   s /= 100;     v /= 100;
+
+            i = Math.floor(h * 6);
+            f = h * 6 - i;
+            p = v * (1 - s);
+            q = v * (1 - f * s);
+            t = v * (1 - (1 - f) * s);
+            switch (i % 6) {
+                case 0: r = v, g = t, b = p; break;
+                case 1: r = q, g = v, b = p; break;
+                case 2: r = p, g = v, b = t; break;
+                case 3: r = p, g = q, b = v; break;
+                case 4: r = t, g = p, b = v; break;
+                case 5: r = v, g = p, b = q; break;
+            }
+            return {
+                r: Math.round(r * 255),
+                g: Math.round(g * 255),
+                b: Math.round(b * 255)
+            };
+        }
+```
 
 
 ## ㅇ function satur_Image : 채도(saturation) 변경
+```javascript
+ let s_value = parseFloat(prompt("숫자 입력(0~1)", "-0.2"));
+                for (let i=0; i<inH; i++) {
+                    for (let k=0; k<inW; k++) {
+                        let R = inImage[0][i][k];
+                        let G = inImage[1][i][k];
+                        let B = inImage[2][i][k];
 
-대표사진 삭제
-사진 설명을 입력하세요.
+                        // RGB --> HSV
+                        let hsv = rgb2hsv(R,G,B);  // {h : 0~360, s : 0 ~ 1.0, v : 0 ~ 1.0}
+                        let H = hsv.h;
+                        let S = hsv.s;
+                        let V = hsv.v;
+                        // 채도를 변경하자
+                        S = S + s_value;
+                        // HSV --> RGB
+                        let rgb = hsv2rgb(H,S,V);
+                        R = rgb.r;
+                        G = rgb.g;
+                        B = rgb.b;
+
+                        // 출력 영상에 넣기
+                        outImage[0][i][k] = R;
+                        outImage[1][i][k] = G;
+                        outImage[2][i][k] = B;
+                    }
+                }            
+
+```
 
 - RGB, HSV 변환 함수를 통해서 각 점에 대한 H, S, V 값을 알 수 있게 되고 본 코딩에서는 채도 값을 변경하였다.(채도 -0.2)
-
-대표사진 삭제
-사진 설명을 입력하세요.
+![saturImageResult](https://user-images.githubusercontent.com/108249298/199452869-2d505dc8-3e58-4c45-b712-3a1f6d76024e.png)
 
 ## ㅇ function orange_Image : 원하는 색 추출
 
 > 코딩 학습시 아래 사진에서 오렌지 색을 찾는 연습을 하였고 기억의 편의를 위해서 함수명은 변경하지 않음
+![orangeImageBefore](https://user-images.githubusercontent.com/108249298/199452960-5be3a31c-2ecd-49eb-a14f-d176540c35d9.png)
 
-대표사진 삭제
-사진 설명을 입력하세요.
+```javascript
+for (let i=0; i<inH; i++) {
+                for (let k=0; k<inW; k++) { 
+                    let R = inImage[0][i][k];
+                    let G = inImage[1][i][k];
+                    let B = inImage[2][i][k];
 
-대표사진 삭제
-사진 설명을 입력하세요.
+                    // RGB --> HSV
+                    let hsv = rgb2hsv(R,G,B);  // {h : 0~360, s : 0 ~ 1.0, v : 0 ~ 1.0}
+                    let H = hsv.h;
+                    let S = hsv.s;
+                    let V = hsv.v;
 
-- rgb2hsv에서 생성된 H 값은 0~1의 범위 이므로 0~360으로 표현되어 있는 HSV 색상표를 사용하기 위해서
-
-(H*360)으로 설정 하였다.
+                    // H 값에 따른 범위를 추출. 예시) 오렌지 : h 범위 8 ~ 30 (대략 그렇게 나옴)
+                    // 오렌지 제외 나머지는 gray scale 처리
+                        if (col1 <= (H*360) && (H*360) <=col2) {           // h 범위가 0~1.0 으로 나와서
+                            outImage[0][i][k] = R;
+                            outImage[1][i][k] = G;
+                            outImage[2][i][k] = B;
+                        } else {   // 나머지는 그레이 스케일
+                            let avg = parseInt((R+G+B)/3);
+                            outImage[0][i][k] = avg;
+                            outImage[1][i][k] = avg;
+                            outImage[2][i][k] = avg;
+                        }
+                    }
+                }
+```
+- rgb2hsv에서 생성된 H 값은 0~1의 범위 이므로 0~360으로 표현되어 있는 HSV 색상표를 사용하기 위해서 (H*360)으로 설정 하였다.
 
 - 아래의 블로그는 RGB, HSV 색상 코드표 이다.
 [RGB, HSV 색상코드표](https://myyac.tistory.com/133)
 
 - 사용자가 입력한 두 값(col1, col2)에 해당하는 색은 RGB로 그 외는 그레이 스케일로 표시하였다.
 - 아래의 결과는 노란색 꽃만 표현하고자 하였다.
+![extractUI](https://user-images.githubusercontent.com/108249298/199453207-a38b5c8a-240f-42da-a73b-2a4d2c7385d1.png)
 
-대표사진 삭제
-사용자 입력
-
-대표사진 삭제
-사진 설명을 입력하세요.
+![resultOfExtractImage](https://user-images.githubusercontent.com/108249298/199453306-b855cba8-fd5d-41c4-b852-0880925ce8a6.png)
 
 
 ## ㅇ 이미지 영상처리 실제 활용 예시
 - 아래 그림의 AI 로봇 처럼..... 이미지 영상처리를 실제에서 어떻게 활용 할 수 있을지 잠시 고민해본 결과이다.
+![robotAI](https://user-images.githubusercontent.com/108249298/199453411-436dca2a-c29d-44b4-87ac-a423c51c450c.png)
 
-대표사진 삭제
-사진 설명을 입력하세요.
 - 아래는 내가 가끔 심심풀이로 하는 스마트폰 게임이다.
+![dreamBlastGame](https://user-images.githubusercontent.com/108249298/199453505-496a5563-edf9-47d9-9514-00a0df3d1ddf.png)
 
-대표사진 삭제
-사진 설명을 입력하세요.
 
-00:09
-blast gameblast game
-대표
-동영상 설명을 입력하세요.
-
-- 상기 영상에서 보는 것 처럼 같은 색의 블록을 터치하면 아이템이 생기고 그 아이템을 활용하여 정해진 턴 이내에 블럭 깨기 등의 미션을 해결하는 게임이다.
+- 같은 색의 블록을 터치하면 아이템이 생기고 그 아이템을 활용하여 정해진 턴 이내에 블럭 깨기 등의 미션을 해결하는 게임이다.
 - 이미지 프로세싱을 코딩하며 이 게임을 자동으로 하는 S/W를 개발하고 싶었다.
 - 내가 하고자 하는 개발 순서이다.
 >1. 게임 프로세스 이해(기 완료)
@@ -367,17 +459,15 @@ blast gameblast game
 >4. 스마트폰에 해당 S/W 설치 및 구동
 >  (3, 4번은 추후 과제로 남겨두었고 2번의 칼라 블록 구분한 결과이다.
 
+![exampleOfGame](https://user-images.githubusercontent.com/108249298/199453640-772c7500-2f34-4a47-b170-227697b585cf.png)
 
-대표사진 삭제
-사진 설명을 입력하세요.
 
 - 실제 게임화면을 입력 받고, 사용자가 원하는 색 블록에 해당하는 버튼을 누르면 오른쪽의 결과와 같이 해당 블록이 구분되어 시현되도록 하였다.
 
 
 ## ㅇ 결론 및 추후 과제
+![Conclustion](https://user-images.githubusercontent.com/108249298/199453697-b5907c40-c130-4390-b16d-4890cb370147.png)
 
-대표사진 삭제
-사진 설명을 입력하세요.
 
 - 현재는 RAW, Color 사진에 대하여 일부 기능만 코딩하였다.
 
