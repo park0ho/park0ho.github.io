@@ -66,7 +66,7 @@
 - HTML5와 JavaScript를 활용하면 Web에서도 이미지, 영상의 처리가 가능하며 Chrome(또는 Edge)로 누구나 사용할 수 있는 장점이 있다.
 
 - 아래는 본 코딩를 그림으로 나타낸 구조도 이다. 구조도에 해당하는 소스코드는 아래에 자세히 설명 하겠다.
-- 
+
 
 ![코딩구조도](https://user-images.githubusercontent.com/108249298/199424575-512aae7f-9862-43a2-887d-eff892ab9609.png)
 
@@ -74,9 +74,9 @@
 
 1. infile 기능을 통하여 raw 파일을 PC의 메모리로 읽어들이기
 2. 이미지의 크기를 확인(raw 파일은 한 pixel이 1 byte 이므로 file size의 루트값이 사진의 크기가 된다.
+![사진의 크기](https://user-images.githubusercontent.com/108249298/199425439-ec80be00-5769-4c2f-89a1-5749efb92a09.png)
 
 
-$사진의크기\left(가로,\ 세로\ 값\right)\ =\ \sqrt{file\ size}$사진의크기(가로, 세로 값) = √file size
 
 3. 사진 크기 만큼의 메모리를 확보한다.(inH, inW)
 4. blob이라는 변수에 사진의 모든 정보를 한번에 가져온다.
@@ -84,8 +84,6 @@ $사진의크기\left(가로,\ 세로\ 값\right)\ =\ \sqrt{file\ size}$사진�
 6. inCanvas라는 변수 이름으로 도화지를 준비한다.
 7. JavaScript에서는 변수(inH, inW)에 입력되어 있는 사진의 정보를 Canvas에 바로 입력 할 수 없다. 따라서 종이 하나(inPaper)를 준비해서 그 종이에 inH,inW의 정보를 한 점씩 찍은 다음에 inPaper를 Canvas에 붙이는 방식을 사용한다.
 > 추후에 JavaScript가 발전하면 해당 기능이 개선되지 않을까 조심스럽게 생각해본다.
-
-![사진의 크기](https://user-images.githubusercontent.com/108249298/199424673-11c71f8f-8a62-4683-8105-b800df49cc09.png)
 
 
 ```javascript
@@ -183,72 +181,40 @@ function equalImage() { // 동일 영상 알고리즘
 5. 이후에는 영상처리 기법에 따라 아래의 ****진짜 영상처리 알고리즘**** 에 해당하는 코딩만 변경된다.
 (아래 부터는 각 코드와 이에 해당하는 알고리즘 위주로 서술 하겠다.)
 
-
-유투브 : https://www.youtube.com/watch?v=BVN6mdfI8Qk
+[Youtube 영상](https://www.youtube.com/watch?v=BVN6mdfI8Qk)
 
 # ㅇ 영상처리 알고리즘
 - 영상처리 알고리즘은 아래의 PPT에서 설명한 것과 같이 크게 4가지 종류로 나누고 있다.
 - 본 프로젝트에서는 코딩의 난이도를 고려하여 프레임 처리를 제외한 3가지의 영상처리 기법을 구현 하였다.
-(프레임 처리는 추후에 코딩 실력 발전에 따라서 구현을 도전할 계획이다.)
+  (프레임 처리는 추후에 코딩 실력 발전에 따라서 구현을 도전할 계획이다.)
+   ![영상처리 알고리즘](https://user-images.githubusercontent.com/108249298/199425678-12c5928f-45c5-407f-890c-9a7142ef89cf.png)
 
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfOSAg/MDAxNjYzMzEyMjgwMzY4.QVIcGoHxgIeAKbOKROadZaMNVxt7tca8l4jE_m53IPkg.Sqwjq7wW7EtNYzo1l8kDj5irvUuuDWpXwTy4AwpvMjAg.PNG.hkpyh/image.png?type=w1)
-
-
-(PPT 7/15) Algorithm of Digital Image Processing
 
 # ㅇ 화소점 처리(1)
-
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfMjQx/MDAxNjYzMzEyNzEyNzU5.FVNq5XVj8SUB3MZcS_zcufBkfVtyMKHcmdqF9PCiHtUg.trInVzgdD7aOHgnsVm_r_rpn-jRh-1xxSAier_UR-v4g.PNG.hkpyh/image.png?type=w1)
-
-
-(ppt 8/15) Example of Digital Image Processing - 화소점 처리[1] 밝게/반전
-
-### 영상 밝게(brite Image) : 왼쪽 이미지와 같이 사진이 전체적으로 밝게 된다.
-
-1. prompt를 활용하여 더하고 싶은 밝기를 사용자가 입력(변수 value)
-2. raw 이미지의 최대값은 255이므로 현재 이미지 + 입력(inImage[][] + value)가 255보다 크면 255로 처리
-3. 255보다 낮으면 현재 이미지 밝기 + 입력(inImage[][] + value)
+   ![화소점처리](https://user-images.githubusercontent.com/108249298/199425748-8c28cddd-60ff-499c-997d-15a5694e3b33.png)
 
 
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfMTU0/MDAxNjYzMzEzNjYzMDU3.9ZgJA79zBk19srPaRypEb5cFF842KzyP5nT-dR6gOPMg.EA9GSbZSWMYlhqx9KxMrUaBCRGYU1B_E9So3Y3nCTAwg.PNG.hkpyh/image.png?type=w1)
-
-대표사진 삭제
-
-사진 설명을 입력하세요.
-
-
-
-### 영상 반전(reverse Image)
+### ㅇ 영상 반전(reverse Image)
 - 최대 음영(255)에서 사진의 각 점의 값을 빼면 오른쪽의 예시와 같이 표현 된다
    (밝은 곳은 어둡게, 어두운 곳은 밝게)
 
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfMTg5/MDAxNjYzMzEyOTU3MzY1.PZInLpoMyLLkt39AESxAi_bot6kPNyDoP8D6ZrNlrqsg.fsSglgnrUQlcqoITCFQtcUkQplcQI4PsPcEzKeowhWMg.PNG.hkpyh/image.png?type=w1)
-
-대표사진 삭제
-
-사진 설명을 입력하세요.
+```javascript
+ for (let i = 0; i < inH; i++) {
+                for (let k = 0; k < inW; k++) {
+                    outImage[i][k] = 255 - inImage[i][k];
+                }
+            }
+```
 
 ##ㅇ 화소점 처리(2)
 
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfMjA4/MDAxNjYzMzEzODcxMDg5.MGyNo8h82fvS4mh5i1Ak98-KC72gp4GC86yLuWmh1UIg.cw5tTHJ54IprEuFKIg-PAn_U8YhGk8lixhHLEqLqNbwg.PNG.hkpyh/image.png?type=w1)
-
-
-(ppt 9/15) Example of Digital Image Processing - 화소점 처리[2] stretching, 평활화
+![평활화](https://user-images.githubusercontent.com/108249298/199426444-565382bc-8693-4623-b3e0-368565afef07.png)
 
 ### 화소점 처리의 기본 개념
 1. 히스토그램(Histogram) : 명도에 따른 빈도수를 그래프로 표현
+![히스토그램1](https://user-images.githubusercontent.com/108249298/199426520-bc2c3c10-5e61-4c58-a9ad-d9d9aee0fe19.png)
 
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfMjAz/MDAxNjYzMzE0OTM4MjU1.fsnOsttnIjhqhIraNNKe9z-erYMcVAAn7HtMzYUqKkIg.mdPfJu4KR_BlBVSGjC73YJon9XY7lm3gMdc997rV9ocg.PNG.hkpyh/image.png?type=w1)
-
-
-히스토그램 기본 개념
-
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfNTQg/MDAxNjYzMzE1MTYzODY5.dPODR17vNcHUHaRbDun4f4w9m1TOwJmSvF-ZMFXm7_gg.wyLV0Chi8hWue_q0SIpCto_6JOrqKPP6UW8zFXgIRwIg.PNG.hkpyh/image.png?type=w1)
-
-
-영상의 특성에 따른 히스토그램
-
-
+![histogram2](https://user-images.githubusercontent.com/108249298/199426606-a9c10161-322c-4fa8-a494-40910a92f9e0.png)
 
 ### stretching : 명암대비가 낮은 영상의 품질 향상
 
@@ -258,13 +224,8 @@ function equalImage() { // 동일 영상 알고리즘
 (해당 공식에 대한 연구/분석은 하지 않고 영상처리를 위하여 활용하였다.)
 3. 위의 히스토그램에서 (c)의 히스토그램을 (d)로 변환하는 알고리즘 이다.
 
+![stretching fomula](https://user-images.githubusercontent.com/108249298/199426720-a9efccd1-cd5d-4e62-89ae-45c00c694c10.png)
 
-
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfMTk2/MDAxNjYzMzE0MzEyMTgz.VhGvVPOB2JNSn9we4DFw8oCb0df1Dnn2UYC-SxTAf6kg.48mYh0p0xGrqVlxVJV7U5NAfjW7BlDNSlgTkQIuyRw4g.PNG.hkpyh/image.png?type=w1)
-
-대표사진 삭제
-
-(공식) 기본 명암 대비 스트레칭 수행
 
 ### 평활화 
  - 어둡게 촬영된 영상의 히스토그램을 조절하여 명암분포가 빈약한 영상을 균일하게 처리
@@ -277,60 +238,48 @@ function equalImage() { // 동일 영상 알고리즘
 
 2. (a)의 원본영상은 사진의 명암이 가운데에 치우쳐저 있으나,
 3. 평활화 과정을 통하여 전체 명암범위(0~255)로 균일하게 영상 표현 가능
+![평활화1](https://user-images.githubusercontent.com/108249298/199426824-c565dec6-4321-4343-afd9-22b72f4ce813.png)
 
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfMTAz/MDAxNjYzMzE2MTM1MDgz.WnBUY8NLQpfEYBic-fK1bvQ0M0qJqEujihb3KI3JqJUg.-5qXLusx_fHY4HutpciVTmlBqTQYcnEe1sP6um4PsrUg.PNG.hkpyh/image.png?type=w1)
-
-대표사진 삭제
-
-사진 설명을 입력하세요.
 
 #ㅇ 기하학 처리
 
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfMjIx/MDAxNjYzMzE2NDQ3OTE0.akceqC2Fwv0DCe8FXWf9L9j8s5VclkKON38zBO45s_Mg.YoPYU6S7XOfsSSiMH5fEr1D0SVzOJUHydQmOigIXqz0g.PNG.hkpyh/image.png?type=w1)
+![기하학처리1](https://user-images.githubusercontent.com/108249298/199426935-6ea692b1-21b0-4831-80c6-78cb9bf106f7.png)
 
-(ppt 10/15) Example of Digital Image Processing - 기하학 처리(축소, 회전)
 
 - 사진의 축소 : 출력영상(outImage)은 사용자가 입력한 배율(변수 : scale)에 따라서 입력영상 각 점의 일부만 가져와서 출력
 
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfMTky/MDAxNjYzMzE2NTYyNDE2.Rt9viAOJxADq6F_fNJ2ExDGuZcnPa368IKNzzJUkZxAg.7C2-v_6Cx2NWphuKR3jJjGTH0bH-JIXtDLlL2CRZ8Xcg.PNG.hkpyh/image.png?type=w1)
-
+'''javascript
+for (let i = 0; i < inH; i++) {
+                for (let k = 0; k < inH; k++) {
+                    outImage[parseInt(i / scale)][parseInt(k / scale)] = inImage[i][k];
+                }
+            }
+'''
 
 
 # ㅇ 영역 처리
  - 화소점 처리는 원본 사진의 값은 변하지 않고 해당 값의 x,y 좌표가 변하는 방식이다.
 - 하지만, 영역처리는 화소의 값과 그 주위의 화소값도 함께 고려하여 영상을 처리하는 방식이다.
 
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfNTEg/MDAxNjYzMzE2OTYzMjc2.3VURtUpCIPMmse41TZiXL5LhisLmquutidpQIw34V60g.l0J5-g-Co6MT6Rr0DOfDxqifuGBtHvzLa3wMH4xgtEkg.PNG.hkpyh/image.png?type=w1)
+![곱의합](https://user-images.githubusercontent.com/108249298/199427228-be6d27ae-3be3-4bff-9e8b-d8aa2ee211f6.png)
 
 > 입력 영상(inImage)에 가중치를 곱한 합을 출력(outImage)
 
-
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfMTQ5/MDAxNjYzMzE3MDIzNjI1.ZB3w6-XGgEDq9OvEBbQLYGRBGjWQx_YSx1uPrZ7algog.fHqV40gF93uiKaIpfx1GTkFAgCwp7Rzr_B89s1hjl3cg.PNG.hkpyh/image.png?type=w1)
-
+![영역처리 알고리즘 모식도](https://user-images.githubusercontent.com/108249298/199427313-1ae3bec7-2d3f-4a54-9446-a6061b1dc5e0.png)
 
 영역처리 알고리즘의 모식도
 
 - 입력영상에 각 영역처리 방법에 따른 마스크(mask)를 씌워서 각 좌표의 곱의 합으로 출력 영상을 구현한다.
 
 - 마스크(mask)는 보통 3x3의 배열로 구성되며 알고리즘에 따라서 5x5 또는 그 이상의 배열이 사용될 수 있다.
+![ppt_blur](https://user-images.githubusercontent.com/108249298/199427502-76550fb9-9446-479d-9487-7192d21e0196.png)
 
-
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfMTUy/MDAxNjYzMzE3NDYxODk2.jZ36IqMzb2CBh-mtgxYhR4NMXnTeS4pnv_Zsjv-1f1cg.dAIV-wZdLLRzv5jxs0UYIr3FeM3XBrYMvyVGq4-Nfm4g.PNG.hkpyh/image.png?type=w1)
-
-
-
-(ppt 11/15) Example of Digital Image Processing - 영역 처리[1](blurring)
 
 - 좌측은 3x3 배열, 우측은 5x5 배열의 mask를 활용한 블러링(blurring) 알고리즘 이다.
-
-
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfMjM2/MDAxNjYzMzE3NjU2NjY4.4zkLrMQgC0kBnRDgHyRviF_DcDJj20Gogbi5oQgNPKAg.cKUk4ydcScHzcAPs72UJQwYNBj8OSn6c7pkbHC9Of5cg.PNG.hkpyh/image.png?type=w1)
-
+![blurring mask](https://user-images.githubusercontent.com/108249298/199427629-9545398a-41f5-4aa9-8a13-9bf6eae652ff.png)
 
 블러링(blurring) 3x3 , 5x5 mask
-
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTZfMjc1/MDAxNjYzMzE4MTExNDIy.EIhjnABV9ucNDnAc35FcTQBcnesl9v8cZklMy47gmNsg.21mC9DWv0qERxhcTDP7NO0L457SGmSWKx9FzrRenB04g.PNG.hkpyh/image.png?type=w1)
-
+![code of mask](https://user-images.githubusercontent.com/108249298/199427701-2814be69-349c-411b-9cb2-365d8f607a1b.png)
 
 - 1번 : blurring 3x3 마스크
 
@@ -340,10 +289,7 @@ function equalImage() { // 동일 영상 알고리즘
 - 따라서 mask 처리를 위한 알고리즘에서는 원본영상은 기존보다 2 크게 설정 되어야 한다.
 (5x5 mask의 경우 마찬가지의 원리로 4 크게 설정 필요)
 
-
-
-![img](https://blogfiles.pstatic.net/MjAyMjA5MTlfNjgg/MDAxNjYzNTQ5NDEwNDQ5.PQZRU3Vu4Ap-vhwhwRlcTy9Bg92qu0zLr039g5R5Rygg.c-Kddo-F9UzZL8swnWOtj2Jry3AQx2bsDdQPhPaBOIMg.PNG.hkpyh/image.png?type=w1)
-
+![네모칸](https://user-images.githubusercontent.com/108249298/199427784-d744836b-8734-46d4-b7d5-8a296b3e581f.png)
 
 - 곱의 합을 구현하는 코드는 아래와 같다.
 
