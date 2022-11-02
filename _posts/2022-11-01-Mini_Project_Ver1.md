@@ -1,7 +1,4 @@
-Mini Project Ver 1.0
-====================
-
-<h1> ㅇ 교육과정 </h1>
+#ㅇ 교육과정 
 
 - 기 간 : '22. 8. 17.(수) ~ 12.30.(금)
 
@@ -10,11 +7,10 @@ Mini Project Ver 1.0
 - 교육명 : AI활용 Big Data 시스템 개발자
 
 
-<h1>ㅇ 교육내용 : JavaScript(Html 5 기반) </h1>
+# ㅇ 교육내용 : JavaScript(Html 5 기반) 
 
 
-
-<h1>ㅇ Project : Mini Project(Ver 1.0)   </h1>
+# ㅇ Project : Mini Project(Ver 1.0)
 
  - 언어 : JavaScipt
 
