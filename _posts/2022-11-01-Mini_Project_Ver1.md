@@ -14,7 +14,7 @@ Mini Project Ver 1.0
 
 
 
-<h1>ㅇ Project : Mini Project(Ver 1.0) </h1>
+<h1>ㅇ Project : Mini Project(Ver 1.0)   </h1>
 
  - 언어 : JavaScipt
 
