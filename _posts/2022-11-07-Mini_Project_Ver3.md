@@ -13,7 +13,7 @@
 - 언어 : JSP
 - 환경 : Web(Chrome에 최적화)
 - 내용 : Server-Side Image Processing Using JavaScript
-- 지도교수 : 우재남
+- 지도교수 : 우재남  
   상기 내용은 본 포스팅의 개요이다.
   대한상공회의소 서울기술교육센터에서 'AI 활용 Big Data 시스템 개발자' 과정을 수강하면서 배운 내용이다.
 
