@@ -37,17 +37,12 @@
 - 새로운 알고리즘으로 코딩을 하면 내가 작성하고 있는 Java의 문법이 맞는지 틀린지 아님 알고리즘이 잘못되었는지를 알기 힘들다.
 - 이러한 시행착오를 줄이고 싶어서 영상처리를 주제로 선정 하였다.
   (아래는 PPT 로 위의 말을 정리하였는데 제대로 표현되지 않은 것 같아서 속상하다)
-
-사진 삭제
-(ppt) Mini Project 4.0 주제 선정 이유
-
-사진 삭제
-(ppt) Mini Project 4.0 주제 선정 이유
+![주제선정이유1](https://user-images.githubusercontent.com/108249298/200276477-206702c8-32e5-4899-b08a-527b6ea921!
+[주제선정이유2](https://user-images.githubusercontent.com/108249298/200276523-ff01a8f3-c126-4f70-a1d6-da257b015064.png)
+6e.png)
 
 ## ㅇ S/W UI 소개
-
-사진 삭제
-(ppt) S/W UI 소개
+![swUi](https://user-images.githubusercontent.com/108249298/200276610-8da8fab5-cbe4-4c65-8c60-1da91d54ada1.png)
 
 - 위의 화면은 S/W의 UI를 간략하게 나타내었다.
     1. 좌측 상단의 File Load, Save 두 개의 메뉴로 구성되어 있다.
@@ -61,21 +56,16 @@
     6. 우측에는 영상처리 등을 위한 사용자 입력 버튼, 보정값 입력을 위한 JTextField, JSlider가 있다.
 
 ## ㅇ S/W 기능 소개
-
-사진 삭제
-(ppt) S/W 기능 소개 - 사진가게(PhotoShop)
-
-사진 삭제
-(ppt) S/W 기능 소개 - 사진가게(PhotoShop)
+![기능소개1](https://user-images.githubusercontent.com/108249298/200276714-1c95f5a6-841f-4585-8e3b-44507e990706.png)
+![기능소개2](https://user-images.githubusercontent.com/108249298/200276754-5afbf762-bcce-45c9-9dd1-6d265a31eba6.png)
 
 - S/W의 영상처리 기능 중에서 일부 기능을 나타내었다.
 - 각 기능에 대한 자세한 설명은 Mini Project 1~3의 포스팅을 참고하면 된다.
 
 
 ## ㅇ S/W 기능 - 게임(Dream Blast) Helper
+![game](https://user-images.githubusercontent.com/108249298/200276833-88268095-5f5f-4363-8bdc-1898e768c80b.png)
 
-사진 삭제
-(ppt) S/W 기능 - 게임(Dream Blast) Helper
 - 이번 미니 프로젝트를 진행하면서 가장 고민했던 부분이다.
 - 영상처리 S/W는 기존의 미니프로젝트 Ver 3.0에서 이미 JSP(라고 쓰고 Java라고 읽는다)로 모두 변환하였다.
 - 물론 JLabel, JTextField, JSlider 등을 사용하면서 처음 코딩해서 그런지 가장 기본적인 부분에서도 수많은 에러 및 버그가 발생하였다.
@@ -92,27 +82,180 @@
     5. '게임에서 OO색 버튼 추출하였습니다'의 로그를 출력하고
     6. S/W 화면의 출력영상으로도 확인이 가능하다.
 
-
 - 색상 판단 알고리즘은 아래와 같다.
     1. 사진 각 픽셀의 R,G,B 정보를 ImageIO로 입력받는다.
-사진 삭제
-사진 설명을 입력하세요.
+```java
+public static BufferedImage roadFromFile (int width, int height, BufferedImage image, String filename) {
+	
+	try {
+		File sampleFile = new File(filedirectory_open);
+		image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+		image = ImageIO.read(sampleFile);
+		
+		System.out.println("Reading Complete" + image);
+		
+		// my code
+		inW = image.getHeight();
+		inH = image.getWidth();
+		
+		System.out.println("W" + inW + "H" + inH);
+		
+		inImage = new int[3][inH][inW];
+		
+		// 읽어오기
+		for(int i=0; i<inH; i++) {
+			for (int k=0; k<inW; k++) {
+				int rgb = image.getRGB(i,k);  // ex)F377D6  --> 0000F3  
+
+				int r = (rgb >> 16) & 0xFF;    // F377D6  ---> 0000F3 & 0000FF ==> F3 
+				int g = (rgb >> 8) & 0xFF;    // F377D6  ---> 00F377 & 0000FF ==> 77
+				int b = (rgb >> 0) & 0xFF;    // F377D6  ---> F377D6 & 0000FF ==> D6
+				
+				inImage[0][i][k] = r;
+				inImage[1][i][k] = g;
+				inImage[2][i][k] = b;
+				}
+		}  // for
+		
+	} catch (IOException e) {
+		System.out.println("Error" + e);
+	}
+		return image;		
+		
+	} // BufferedImage roadFromFile(int width,
+```
     2. RGB 값을 HSV로 변환한다.
     (Mini Project Ver 3.0에서 고생했던 RGBtoHSV, HSVtoRGB 함수 활용)
-사진 삭제
-hsv2rgb
-사진 삭제
-rgb2hsv
+```java
+public static float[] rgb2hsv(float r, float g, float b) {
+	float max1 = Math.max(r,g);
+	float max2 = Math.max(g,b);
+	float max = Math.max(max1,max2);
+	
+	float min1 = Math.min(r,g);
+	float min2 = Math.min(g,b);
+	float min = Math.min(min1, min2);
+	
+	float d = max - min; //Delta RGB value
+	float h=0, s;
+	float v = max / 255;
+	
+	if (max==0)  s = 0;
+	else s = d/max;	   
+	
+	if(max==min){ h = 0; }
+
+	else if(max==r){ h = (g - b) + d * (g < b ? 6: 0); h /= 6 * d; 	}
+	else if(max==g){ h = (b - r) + d * 2; h /= 6 * d;	}
+	else{ h = (r - g) + d * 4; h /= 6 * d;	}	
+								 
+	hsv[0] = (float)(h);
+	hsv[1] = (float)(s);
+	hsv[2] = (float)(v);
+	
+	return hsv;
+} // rgb2hsv
+
+public static float[] hsv2rgb(float h, float s, float v)
+{
+	float r=0, g=0, b=0, f, p, q, t;
+	 h=h*360; s=s*100; v=v*100;
+     h = Math.max(0, Math.min(360, h));
+     s = Math.max(0, Math.min(100, s));
+     v = Math.max(0, Math.min(100, v));        
+     h /= 360;   s /= 100;     v /= 100;
+
+     int i = (int) Math.floor(h * 6);
+     f = h * 6 - i;
+     p = v * (1 - s);
+     q = v * (1 - f * s);
+     t = v * (1 - (1 - f) * s);
+
+     if(i%6==0){ r = v; g = t; b = p; }     
+     else if(i%6==1){ r = q; g = v; b = p; }
+     else if(i%6==2){ r = p; g = v; b = t; }
+     else if(i%6==3){ r = p; g = q; b = v; }
+     else if(i%6==4){ r = t; g = p; b = v; }
+     else if(i%6==5){ r = v; g = p; b = q; }
+    
+  	rgb[0] = (float) r*255;
+  	rgb[1] = (float) g*255;
+  	rgb[2] = (float) b*255;
+  
+    return rgb;
+} // hsv2rgb
+```
     3. 각 점의 H 값 중에서 원하는 값을 누적시킨다. 각 블록 색상에 따른 H값을 범위는 여러번의 시행착오(노가다)를 통해서 확인 하였다.
-사진 삭제
-사진 설명을 입력하세요.
+```java
+	      if(0<=(H*360) && (H*360) <= 50) {
+					sum_color_orange ++;
+				}
+							
+				if(72<=(H*360) && (H*360) <= 132) {
+					sum_color_green ++;
+				}
+				
+				if(150<=(H*360) && (H*360) <= 210) {
+					sum_color_sky ++;
+				}
+				
+				if(260<=(H*360) && (H*360) <= 290) {
+					sum_color_purple ++;
+				}
+				
+				if(302<=(H*360) && (H*360) <= 362) {
+					sum_color_pink ++;
+				}
+```
     4. 누적된 값들 중에서 가장 큰 값을 찾는다.
-사진 삭제
-사진 설명을 입력하세요.
+```java
+ int[] find_max_color = new int[]{sum_color_sky, sum_color_pink, sum_color_green, 
+					 							sum_color_purple, sum_color_orange};
+			 int max_color = 0;
+			 
+			 for (int i=0; i<find_max_color.length ; i++) {
+				 if(max_color < find_max_color[i]) {
+					 max_color = find_max_color[i];
+				 }
+			 }
+			 textarea_record.append("max_color = " + max_color + '\n');
+```
     5. 가장 큰 값(max_color)에 해당하는 버튼으로 마우스 이동 한 후에 클릭 시킨다.
     단순히 화면상의 좌표로 마우스를 이동 시키는 것이기 때문에 S/W를 실행한 다음 S/W의 위치를 변경시키면 제대로 동작하지 않는다. S/W의 위치를 변경시켰을 때 해당 좌표를 확인하는 방법도 추후에 고민해야 한다.
-사진 삭제
-사진 설명을 입력하세요.
+```java
+ try {
+				Robot robot_mouse_move = new Robot();
+				
+				if (max_color == sum_color_sky) {
+					robot_mouse_move.mouseMove(1460,860);
+					robot_mouse_move.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+					robot_mouse_move.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+				 }
+				
+				if (max_color == sum_color_orange) {
+					robot_mouse_move.mouseMove(1500,860);
+					robot_mouse_move.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+					robot_mouse_move.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+				 }
+				
+				if (max_color == sum_color_green) {
+					robot_mouse_move.mouseMove(1380,860);
+					robot_mouse_move.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+					robot_mouse_move.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+				 }
+				
+				if (max_color == sum_color_purple) {
+					robot_mouse_move.mouseMove(1420,860);
+					robot_mouse_move.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+					robot_mouse_move.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+				 }
+				
+				if (max_color == sum_color_pink) {
+					robot_mouse_move.mouseMove(1340,860);
+					robot_mouse_move.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+					robot_mouse_move.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+				 }
+```
     6. 최종적으로 결과를 확인한다.(박수~!!)
 
 
@@ -131,49 +274,106 @@ rgb2hsv
 - 그 중에서 이번 프로젝트에서는 로그 기록에 활용 하기로 하였다.
 - 로그는 '언제' '무엇을' 했는지 기록하여야 하므로 아래의 코드를 활용 하였다.
 - JAVA는 코드 몇 줄 만으로도 쉽게 현재 시간을 확인 및 출력 할 수 있어서 매우 편리하였다.
+```java
+String formatDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+			textarea_record.append(formatDate + " ");
+			
+			String formatTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss.SSS"));
+			textarea_record.append(formatTime + " -- ");
+```![사용자 편의기능(로그)](https://user-images.githubusercontent.com/108249298/200278177-1876f61b-ca2d-4f3b-9fb5-ed50a8ac184c.png)
 
-사진 삭제
-사진 설명을 입력하세요.
-
-사진 삭제
-(ppt) S/W 기능 - 사용자 편의기능(로그 기록, 저장)
 - textarea에 로그를 기록하는 것은 아래와 같다.
 > textarea_record.append(" 로그로그로그") ;
 - 이 때 꽤 많은 시간을 필요로 했던 것이 JScrollPane 이다. 로그가 일정 수준 이상으로 기록되면 textarea에 누적이 되어서 한 눈에 볼 수 없게 되고 이 때 scrollbar를 추가하여야 한다.
     또한 로그가 저장 되면 새로운 로그가 저장된 위치로 scrollbar가 자동으로 이동하여야 한다.
 - 구글께서 알려주신 코드를 적용하였다.
 - JScrollPane이 추가 될 textarea를 선언하고, panel에는 textarea를 add 하는 것이 아니라 JScrollPane만 add 하여야 한다. 아마도 textarea는 JScrollPane에 종속되는 것으로 생각하여야 할 것이다.
-
-사진 삭제
-사진 설명을 입력하세요.
+```java
+JScrollPane scroll_text_area = new JScrollPane(textarea_record, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scroll_text_area.setBounds(10,10,815,200);
+		scroll_text_area.setLocation(20,500);
+		
+		scroll_text_area.getVerticalScrollBar().setValue(scroll_text_area.getVerticalScrollBar().getMaximum());
+		
+		panel_Main.add(scroll_text_area);
+```
 
 - 새로운 로그가 저장된 위치로 scrollbar 자동 이동하는 코드 이다.
     JTextArea에 저장된 텍스트의 총 길이에 scrollbar의 caret의 포지션을 설정하고 textarea를 새로고침하면 된다. 
 - 이것을 textfield_record_scroll 이라는 함수로 선언한 다음 textarea에 새로운 내용이 기록될 때 마다 추가해주었다.
 - (시도해 볼 내용) textarea에 change event listener를 추가해서 event가 발생할때마다 해당 함수를 실행하도록 하면 되지 않을까...
-사진 삭제
-사진 설명을 입력하세요.
+```java
+public void textfield_record_scroll() {
+		//int 형 변수에 jTextArea 객체의 텍스트의 총 길이를 저장
+		int pos = textarea_record.getText().length();
+		
+		//caret 포지션을 가장 마지막으로 맞춤
+		textarea_record.setCaretPosition(pos);
+		//갱신
+		textarea_record.requestFocus();
+	}
+```
 
 ## ㅇ 사용자 편의기능(키보드 단축키)
-
-사진 삭제
-사진 설명을 입력하세요.
+![shutCutKey](https://user-images.githubusercontent.com/108249298/200278574-26707615-231d-4eae-bb4a-59106c6a5fcb.png)
 - 키보드 단축키는 의외로 단순하였다. 달랑 한 줄
-
-사진 삭제
-사진 설명을 입력하세요.
+```java
+file.setMnemonic(KeyEvent.VK_F);
+```
 
 ## ㅇ 사용자 편의기능(파일 로드, 저장)
+![편의기능(파일로드 저장)](https://user-images.githubusercontent.com/108249298/200278965-ae0d162e-3678-4b52-bd03-a5bf30948e4b.png)
 
-사진 삭제
-(ppt) S/W 기능 - 사용자 편의기능(파일 로드, 저장)
 - 이번 S/W 에서 파일 입력 관련 제한사항이다.
     1. 입력 파일 유형 : 'jpg' (그 외의 파일이 입력되면 S/W는 수많은 오류를 발생, 동작 불가)
     2. 파일은 단 하나만 입력 되어야 한다.
 - 처음에는 FileDialog를 활용하여 파일의 입력 및 저장을 하였다. 당연히 기능은 제대로 동작하지만 파일의 확장자를 제한하는 기능은 없었다.(아니, 찾지 못하였다.)
 - 구글께서 알려주신 방법은 JFileChooser 였다.
-사진 삭제
-사진 설명을 입력하세요.
+```java
+else if(e.getSource() == fopen) {
+			file_open.setVisible(true);
+			file_open.setFileSelectionMode(JFileChooser.FILES_ONLY);
+			file_open.setDialogTitle("영상처리할 파일을 로드 하세요");
+			file_open.addChoosableFileFilter(new FileNameExtensionFilter("Images(JPG), JPG만 선택 가능 합니다", "jpg"));
+			file_open.setAcceptAllFileFilterUsed(true);
+			file_open.setMultiSelectionEnabled(false); // 다중 선택 불가 설정
+
+			file_open.setSelectedFile(new File(".jpg"));
+			File open_default_directory = new File("C:\\images");
+			file_open.setCurrentDirectory(open_default_directory);
+			
+			int file_open_result = file_open.showOpenDialog(this);
+			
+			if(file_open_result == JFileChooser.APPROVE_OPTION) {
+			filedirectory_open = file_open.getSelectedFile().getAbsolutePath();
+			filename_open = file_open.getSelectedFile().getName();
+			}
+			
+			if(filedirectory_open==null) { return;	}
+						
+			File file_name_Open = file_open.getSelectedFile();
+			String open_file = file_name_Open.getName();
+			
+			String formatDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+			textarea_record.append(formatDate + " ");
+			
+			String formatTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss.SSS"));
+			textarea_record.append(formatTime + " -- ");
+			
+			textarea_record.append(filedirectory_open + " 의 파일을 로드 하였습니다. " + '\n');
+			
+			label_filename.setFont(new Font("맑은고딕", Font.BOLD, 20));
+			label_filename.setText("선택한 파일은 : " + filedirectory_open + " 입니다.");
+			
+			image = roadFromFile(width, height, image, filename_open);
+				
+			equalImage(image);
+			Graphics2D g_in = (Graphics2D) panel_Image_In.getGraphics();		
+			g_in.drawImage(image, 0, 0, null);
+			textfield_record_scroll();
+			
+		}
+```
     1. file_open.setFileSelectionMode : FILES_ONLY // 파일만 입력 가능하도록 제한
     2. file_open.setDialogTitle : JFileChooser 상단의 제목 설정
     3. file_open.addChoosableFileFilter : 파일 유형 제한하는 메뉴 생성
@@ -184,13 +384,8 @@ rgb2hsv
 - JFileChooser에서 선택한 file의 directory, filename을 입력받기 위해서는 반드시 아래의 과정을 해야 한다.
 - 정확한 이유는 찾지 못하였으나, JFileChooser가 실행된 것을 확인해야만 .getSelectedFile()이 동작되도록 제한되어있는 것으로 짐작된다.
 
-사진 삭제
-사진 설명을 입력하세요.
-
 # ㅇ 추가 개발 및 개선 필요사항(1)
-
-사진 삭제
-(ppt) 추가 개발 및 개선 필요 사항
+![개선1](https://user-images.githubusercontent.com/108249298/200279190-da7be80b-b542-40ca-9181-33b550dc40bc.png)
 
 - 치명적인 단점이 하나 있다. 영상 시현 패널의 크기가 (400 x 300)으로 고정되어 있다는 것이다.
   (본 프로젝트 코딩에서 가장 해보고 싶었지만 못했던 것이다.)
@@ -212,9 +407,7 @@ rgb2hsv
 [Youtube](https://www.youtube.com/playlist?list=PLW2UjW795-f6xWA2_MUhEVgPauhGl3xIp)
 
 ## ㅇ 추가 개발 및 개선 필요사항(2)
-
-사진 삭제
-사진 설명을 입력하세요.
+![개선21](https://user-images.githubusercontent.com/108249298/200279250-1e511ee1-36ed-4a57-a806-ba2884586124.png)
 
 - S/W 속도가 생각보다 느리다.
 - 처음 개발하는 S/W라서 이미지 로드하고 영상처리하는 속도가 이게 맞는지 잘 모른다.
