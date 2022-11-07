@@ -84,6 +84,7 @@
 
 - 색상 판단 알고리즘은 아래와 같다.
     1. 사진 각 픽셀의 R,G,B 정보를 ImageIO로 입력받는다.
+
 ```java
 public static BufferedImage roadFromFile (int width, int height, BufferedImage image, String filename) {
 	
@@ -124,8 +125,10 @@ public static BufferedImage roadFromFile (int width, int height, BufferedImage i
 		
 	} // BufferedImage roadFromFile(int width,
 ```
-    2. RGB 값을 HSV로 변환한다.
+   
+   2. RGB 값을 HSV로 변환한다.
     (Mini Project Ver 3.0에서 고생했던 RGBtoHSV, HSVtoRGB 함수 활용)
+    
 ```java
 public static float[] rgb2hsv(float r, float g, float b) {
 	float max1 = Math.max(r,g);
@@ -185,7 +188,9 @@ public static float[] hsv2rgb(float h, float s, float v)
     return rgb;
 } // hsv2rgb
 ```
+
     3. 각 점의 H 값 중에서 원하는 값을 누적시킨다. 각 블록 색상에 따른 H값을 범위는 여러번의 시행착오(노가다)를 통해서 확인 하였다.
+    
 ```java
 	      if(0<=(H*360) && (H*360) <= 50) {
 					sum_color_orange ++;
@@ -207,7 +212,9 @@ public static float[] hsv2rgb(float h, float s, float v)
 					sum_color_pink ++;
 				}
 ```
+
     4. 누적된 값들 중에서 가장 큰 값을 찾는다.
+    
 ```java
  int[] find_max_color = new int[]{sum_color_sky, sum_color_pink, sum_color_green, 
 					 							sum_color_purple, sum_color_orange};
@@ -220,8 +227,10 @@ public static float[] hsv2rgb(float h, float s, float v)
 			 }
 			 textarea_record.append("max_color = " + max_color + '\n');
 ```
+
     5. 가장 큰 값(max_color)에 해당하는 버튼으로 마우스 이동 한 후에 클릭 시킨다.
     단순히 화면상의 좌표로 마우스를 이동 시키는 것이기 때문에 S/W를 실행한 다음 S/W의 위치를 변경시키면 제대로 동작하지 않는다. S/W의 위치를 변경시켰을 때 해당 좌표를 확인하는 방법도 추후에 고민해야 한다.
+    
 ```java
  try {
 				Robot robot_mouse_move = new Robot();
@@ -256,6 +265,7 @@ public static float[] hsv2rgb(float h, float s, float v)
 					robot_mouse_move.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 				 }
 ```
+
     6. 최종적으로 결과를 확인한다.(박수~!!)
 
 
@@ -274,13 +284,16 @@ public static float[] hsv2rgb(float h, float s, float v)
 - 그 중에서 이번 프로젝트에서는 로그 기록에 활용 하기로 하였다.
 - 로그는 '언제' '무엇을' 했는지 기록하여야 하므로 아래의 코드를 활용 하였다.
 - JAVA는 코드 몇 줄 만으로도 쉽게 현재 시간을 확인 및 출력 할 수 있어서 매우 편리하였다.
+- 
 ```java
 String formatDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
 			textarea_record.append(formatDate + " ");
 			
 			String formatTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss.SSS"));
 			textarea_record.append(formatTime + " -- ");
-```![사용자 편의기능(로그)](https://user-images.githubusercontent.com/108249298/200278177-1876f61b-ca2d-4f3b-9fb5-ed50a8ac184c.png)
+```
+
+![사용자 편의기능(로그)](https://user-images.githubusercontent.com/108249298/200278177-1876f61b-ca2d-4f3b-9fb5-ed50a8ac184c.png)
 
 - textarea에 로그를 기록하는 것은 아래와 같다.
 > textarea_record.append(" 로그로그로그") ;
@@ -288,6 +301,7 @@ String formatDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy
     또한 로그가 저장 되면 새로운 로그가 저장된 위치로 scrollbar가 자동으로 이동하여야 한다.
 - 구글께서 알려주신 코드를 적용하였다.
 - JScrollPane이 추가 될 textarea를 선언하고, panel에는 textarea를 add 하는 것이 아니라 JScrollPane만 add 하여야 한다. 아마도 textarea는 JScrollPane에 종속되는 것으로 생각하여야 할 것이다.
+- 
 ```java
 JScrollPane scroll_text_area = new JScrollPane(textarea_record, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scroll_text_area.setBounds(10,10,815,200);
@@ -302,6 +316,7 @@ JScrollPane scroll_text_area = new JScrollPane(textarea_record, JScrollPane.VERT
     JTextArea에 저장된 텍스트의 총 길이에 scrollbar의 caret의 포지션을 설정하고 textarea를 새로고침하면 된다. 
 - 이것을 textfield_record_scroll 이라는 함수로 선언한 다음 textarea에 새로운 내용이 기록될 때 마다 추가해주었다.
 - (시도해 볼 내용) textarea에 change event listener를 추가해서 event가 발생할때마다 해당 함수를 실행하도록 하면 되지 않을까...
+- 
 ```java
 public void textfield_record_scroll() {
 		//int 형 변수에 jTextArea 객체의 텍스트의 총 길이를 저장
@@ -317,6 +332,7 @@ public void textfield_record_scroll() {
 ## ㅇ 사용자 편의기능(키보드 단축키)
 ![shutCutKey](https://user-images.githubusercontent.com/108249298/200278574-26707615-231d-4eae-bb4a-59106c6a5fcb.png)
 - 키보드 단축키는 의외로 단순하였다. 달랑 한 줄
+
 ```java
 file.setMnemonic(KeyEvent.VK_F);
 ```
@@ -329,6 +345,7 @@ file.setMnemonic(KeyEvent.VK_F);
     2. 파일은 단 하나만 입력 되어야 한다.
 - 처음에는 FileDialog를 활용하여 파일의 입력 및 저장을 하였다. 당연히 기능은 제대로 동작하지만 파일의 확장자를 제한하는 기능은 없었다.(아니, 찾지 못하였다.)
 - 구글께서 알려주신 방법은 JFileChooser 였다.
+
 ```java
 else if(e.getSource() == fopen) {
 			file_open.setVisible(true);
@@ -374,6 +391,7 @@ else if(e.getSource() == fopen) {
 			
 		}
 ```
+
     1. file_open.setFileSelectionMode : FILES_ONLY // 파일만 입력 가능하도록 제한
     2. file_open.setDialogTitle : JFileChooser 상단의 제목 설정
     3. file_open.addChoosableFileFilter : 파일 유형 제한하는 메뉴 생성
