@@ -1,3 +1,7 @@
+[요약지](https://github.com/park0ho/park0ho.github.io/blob/7bb81e83a95ba4f6a292f7e8d36d2c123fbc139b/docs/%5B%EC%9A%94%EC%95%BD%EC%A7%80%5D%20%EB%AF%B8%EB%8B%88%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_Ver4_(%EB%B0%95%EC%98%81%ED%98%B8).pdf)
+
+[보고서](https://github.com/park0ho/park0ho.github.io/blob/7bb81e83a95ba4f6a292f7e8d36d2c123fbc139b/docs/Mini%20Project%20Ver4.0.pdf)
+
 ## ㅇ 교육과정
 - 기 간 : '22. 8. 17.(수) ~ 12.30.(금)
 - 기 관 : 대한상공회의소 서울기술교육센터
