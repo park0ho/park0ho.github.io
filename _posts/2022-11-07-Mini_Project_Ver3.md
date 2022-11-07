@@ -1,5 +1,7 @@
 
+[요약지] (https://github.com/park0ho/park0ho.github.io/blob/d626896921a989fbd85fb579835c8769a2fc409e/docs/%5B%EC%9A%94%EC%95%BD%EC%A7%80%5D%20%EB%AF%B8%EB%8B%88%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_Ver3_(%EB%B0%95%EC%98%81%ED%98%B8).pdf)
 
+[보고서](https://github.com/park0ho/park0ho.github.io/blob/d626896921a989fbd85fb579835c8769a2fc409e/docs/MiniProjectVer3.pdf)
 
 ## ㅇ 교육과정
   - 기 간 : '22. 8. 17.(수) ~ 12.30.(금)
