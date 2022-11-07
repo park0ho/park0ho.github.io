@@ -30,11 +30,7 @@
 - 최소 몇십년간은 스마트폰으로 게임을 하는 사람들이 많을 것이다. 스마트폰의 기술 발전 그리고 게임의 다양화 등 관련 환경은 급속도로 변하고 있다. 따라서 관련 기술에 대한 주제는 지금도 그렇지만 향후에도 꾸준히 코딩 및 밥벌이에 좋은 주제가 될 것이다.
 - 지금 보니 난 이 게임을 나름 열심히 하고 있었다. 레벨 6820
 - 한번에 한 레벨을 꺨 수 없는 경우가 많았으니 적어도 10,000번 이상은 게임을 했다고 볼 수 있다.
-
-
-
-대표사진 삭제
-사진 설명을 입력하세요.
+![game6820](https://user-images.githubusercontent.com/108249298/200246638-ca365609-54af-4c0f-8c5d-323593cb384c.png)
 
 - 지난 Mini Project 2.0에서도 언급한 것 처럼 내 목표는 이 게임을 내가 아닌 '내가 만든 AI'가 하는 것이다.
 - 관련 필요 기술은 영상처리(기 완료), 서버/PC/스마트폰 입출력 연동, AI 모델 개발 등 많이 있다.
@@ -48,9 +44,7 @@
 ## ㅇ서버-클라이언트 구조 이해
 - 가장 먼저 선행되어야 할 것이 서버, 클라이언트 개념에 대한 이해이다.
 (나는 약 10년간 공군 정보통신장교로 근무하면서 OO 체계의 서버를 24시간 교대근무하면서 무중단 운영한 경험이 있다. 그 떄 서버-클라이언트-네트워크에 대한 아주 얇은 기본적인 지식은 머리와 몸에 체득하였다.)
-
-사진 삭제
-(ppt 05/20) 서버-클라이언트 구조 및 Mini Project 모식도
+![server_client](https://user-images.githubusercontent.com/108249298/200246734-881a025a-7738-4761-b7e7-d2d45c0f8508.png)
 
 ## ㅇ Client(PC) 소스코드 : Html5로 작성
 
@@ -58,18 +52,25 @@
 - 아래 그림은 PC 에서 보이는 화면이다. submit 은 버튼처럼 생겼으며 'processing!!' 이라고 이름을 주었다.
 
   (디자인...CSS... 언젠가 필요하면 공부해서 다른 홈페이지들 처럼 예쁘게 꾸며야지)
-
-
-사진 삭제
-사진 설명을 입력하세요.
+![sw_Ui](https://user-images.githubusercontent.com/108249298/200246817-aaba69fb-54d5-4bac-9feb-b867af1c6cb8.png)
 
 - submit 을 위해서는 'form' 안에 사용자가 입력하는 부분을 작성하여야 하며 이번 프로젝트에서는 총 3개의
  사용자 입력이 있다.
 1. 영상처리 알고리즘 종류
 2. 파라미터 2개(밝게/어둡게, 색 추출 범위 등)
 
-사진 삭제
-사진 설명을 입력하세요.
+```java
+<h1> Digital Image Processing(Color) </h1>
+<form action="Color_pyh_server.jsp" method="post" enctype="multipart/form-data">
+	
+	<p> <select name="algo">
+			<option value=""> -------- Algorithm -------- </option>
+			<option value="101"> 반전영상 </option>
+			<option value="102"> 밝게/어둡게 </option>
+			<option value="103"> 상하 미러링</option>
+			<option value="104"> 좌우 미러링</option>
+
+```
 
 ## ㅇ Server-Side 소스코드
 
