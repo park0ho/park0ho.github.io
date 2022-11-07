@@ -1,5 +1,4 @@
-
-[요약지] (https://github.com/park0ho/park0ho.github.io/blob/d626896921a989fbd85fb579835c8769a2fc409e/docs/%5B%EC%9A%94%EC%95%BD%EC%A7%80%5D%20%EB%AF%B8%EB%8B%88%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_Ver3_(%EB%B0%95%EC%98%81%ED%98%B8).pdf)
+[요약지](https://github.com/park0ho/park0ho.github.io/blob/d626896921a989fbd85fb579835c8769a2fc409e/docs/%5B%EC%9A%94%EC%95%BD%EC%A7%80%5D%20%EB%AF%B8%EB%8B%88%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_Ver3_(%EB%B0%95%EC%98%81%ED%98%B8).pdf)
 
 [보고서](https://github.com/park0ho/park0ho.github.io/blob/d626896921a989fbd85fb579835c8769a2fc409e/docs/MiniProjectVer3.pdf)
 
@@ -198,6 +197,7 @@ public void reverseImage(){
 ![hsv2rgb](https://user-images.githubusercontent.com/108249298/200265302-f908075e-37c4-46db-9bbc-0abd2f773b27.png)
 
 - 내가 작성한 코드는 아래와 같다.
+
 ```java
 public float[] rgb2hsv
    (float r, float g, float b) {
@@ -294,7 +294,7 @@ public float[] hsv2rgb(float h, float s, float v){
 - 문제점 3) 리턴 값
     1. JavaScript에서는 리턴 값의 갯수에 제한이 없다. 하지만 JSP에서는 1개의 값만 리턴이 가능하다.
     2. 다만, 배열도 1개의 값으로 간주되어서 여러개의 값이 필요할때에는 배열을 선언하는 것으로 대체할 수 있다.
-    3. 
+ 
 ![return](https://user-images.githubusercontent.com/108249298/200265718-2a5a06a9-1d10-46cc-8880-ecb56f57ba0c.png)
 
 
@@ -334,5 +334,7 @@ public float[] hsv2rgb(float h, float s, float v){
 - 최종적으로 개발하고자 하는 AI가 나 대신에 게임하는 모습을 언제쯤 볼 수 있을까?
 - 앞으로 배울 Java, Phython, R... 등의 언어는 지금보다 수월하게 배울 수 있을까?
 - 다른 Mini Project 또는 언어를 하나씩 배울 때마다 지금처럼 블로그에 나름 친절히(!) 정리 할 수 있을까?
+
+
 
 이제 끝.  감사합니다. 또 오세요~^^
