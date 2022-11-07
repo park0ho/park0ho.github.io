@@ -389,8 +389,7 @@ else if(e.getSource() == fopen) {
 			g_in.drawImage(image, 0, 0, null);
 			textfield_record_scroll();
 			
-		}
-```
+		}```
 
     1. file_open.setFileSelectionMode : FILES_ONLY // 파일만 입력 가능하도록 제한
     2. file_open.setDialogTitle : JFileChooser 상단의 제목 설정
